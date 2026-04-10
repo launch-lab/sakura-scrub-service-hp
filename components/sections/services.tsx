@@ -82,7 +82,7 @@ export function Services() {
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             Services
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
@@ -121,15 +121,15 @@ export function Services() {
                     )}
                   </div>
                 ) : (
-                  <div className="relative aspect-[4/3] bg-gradient-to-br from-aqua-50 via-white to-sakura-50">
+                  <div className="relative aspect-[4/3] bg-background">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Icon className="h-16 w-16 text-aqua-300" />
+                      <Icon className="h-16 w-16 text-foreground/15" />
                     </div>
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sakura-50 text-sakura-600">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-foreground/5 text-foreground/80">
                       <Icon className="h-4.5 w-4.5" />
                     </div>
                     <h3 className="font-display text-base font-semibold text-foreground">

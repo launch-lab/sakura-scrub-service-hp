@@ -38,13 +38,12 @@ export function Strengths() {
   return (
     <section
       id="strengths"
-      className="relative overflow-hidden bg-gradient-to-b from-aqua-50/60 via-white to-white py-24 md:py-32"
+      className="relative overflow-hidden bg-background py-24 md:py-32"
     >
-      <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-background to-transparent" />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal direction="up">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
               Our Strengths
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
@@ -62,7 +61,7 @@ export function Strengths() {
                 const Icon = s.icon;
                 return (
                   <RevealItem as="li" direction="up" key={s.title} className="flex gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sakura-500 text-white shadow-[var(--shadow-card)]">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-foreground text-background shadow-[var(--shadow-card)]">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -80,9 +79,9 @@ export function Strengths() {
           <Reveal direction="left" delay={0.15} className="relative">
             <div className="rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:p-10">
               <div className="flex items-center gap-3">
-                <div className="inline-flex items-center gap-2 rounded-full bg-sakura-50 px-3 py-1 text-xs font-semibold text-sakura-700">
+                <div className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-wider text-foreground/70">
                   <Award className="h-3.5 w-3.5" />
-                  認定特許
+                  Patent
                 </div>
                 <span className="text-xs text-muted">※ 一般社団法人 防カビ技研</span>
               </div>
@@ -93,12 +92,12 @@ export function Strengths() {
                 {patents.map((p) => (
                   <div
                     key={p.number}
-                    className="rounded-2xl border border-border/80 bg-gradient-to-br from-white to-sakura-50/40 p-5"
+                    className="rounded-2xl border border-border bg-background/60 p-5"
                   >
-                    <p className="font-display text-sm font-semibold tracking-wide text-sakura-700">
+                    <p className="font-display text-xs font-medium uppercase tracking-[0.15em] text-subtle">
                       {p.number}
                     </p>
-                    <p className="mt-1 font-display text-lg font-bold text-foreground">
+                    <p className="mt-2 font-display text-lg font-bold text-foreground">
                       {p.title}
                     </p>
                     <p className="mt-2 text-sm leading-relaxed text-muted">{p.description}</p>
@@ -106,9 +105,6 @@ export function Strengths() {
                 ))}
               </div>
             </div>
-
-            <div className="absolute -right-3 -top-3 -z-10 h-24 w-24 rounded-full bg-sakura-200/60 blur-2xl" />
-            <div className="absolute -bottom-4 -left-6 -z-10 h-28 w-28 rounded-full bg-aqua-200/60 blur-2xl" />
           </Reveal>
         </div>
       </div>

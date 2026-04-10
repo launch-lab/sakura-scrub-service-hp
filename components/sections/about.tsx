@@ -4,11 +4,13 @@ import { site } from "@/lib/site";
 export function About() {
   return (
     <section id="about" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sakura-50/80 via-white to-aqua-50/60" />
+      <div className="absolute inset-0 -z-10 bg-background" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-px hairline" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-px hairline" />
 
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Reveal className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             Message
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">

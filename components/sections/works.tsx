@@ -40,7 +40,7 @@ export function Works() {
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
               Works
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
@@ -76,7 +76,7 @@ export function Works() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
               </div>
               <figcaption className="absolute inset-x-0 bottom-0 p-5">
-                <span className="inline-flex items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-semibold text-sakura-700 backdrop-blur">
+                <span className="inline-flex items-center rounded-full bg-white/90 px-2.5 py-0.5 text-[10px] font-medium uppercase tracking-wider text-foreground/80 backdrop-blur">
                   {w.tag}
                 </span>
                 <p className="mt-2 font-display text-sm font-semibold text-white md:text-base">

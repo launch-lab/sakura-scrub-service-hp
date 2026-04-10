@@ -45,24 +45,24 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium text-foreground/80 transition hover:text-sakura-600"
+              className="text-sm font-medium text-foreground/70 transition hover:text-foreground"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-4 lg:flex">
           <a
             href={`tel:${site.phone.replace(/-/g, "")}`}
-            className="flex items-center gap-2 text-sm font-semibold text-aqua-700 hover:text-aqua-800"
+            className="flex items-center gap-2 text-sm font-medium text-foreground/70 hover:text-foreground"
           >
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
           <Link
             href="#contact"
-            className="rounded-full bg-sakura-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-card)] transition hover:bg-sakura-600"
+            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-foreground/85"
           >
             無料見積もり
           </Link>
@@ -88,7 +88,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-3 text-base font-medium text-foreground/90 transition hover:bg-sakura-50 hover:text-sakura-600"
+                  className="rounded-xl px-3 py-3 text-base font-medium text-foreground/90 transition hover:bg-foreground/5"
                 >
                   {item.label}
                 </Link>
@@ -97,7 +97,7 @@ export function Header() {
             <div className="mt-5 flex flex-col gap-3 border-t border-border pt-5">
               <a
                 href={`tel:${site.phone.replace(/-/g, "")}`}
-                className="flex items-center justify-center gap-2 rounded-full border border-aqua-300 py-3 text-sm font-semibold text-aqua-700"
+                className="flex items-center justify-center gap-2 rounded-full border border-border py-3 text-sm font-semibold text-foreground"
               >
                 <Phone className="h-4 w-4" />
                 {site.phone}
@@ -105,7 +105,7 @@ export function Header() {
               <Link
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-sakura-500 py-3 text-center text-sm font-semibold text-white"
+                className="rounded-full bg-foreground py-3 text-center text-sm font-semibold text-background"
               >
                 無料見積もり
               </Link>

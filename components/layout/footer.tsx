@@ -28,7 +28,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm text-muted">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="transition hover:text-sakura-600">
+                <Link href={item.href} className="transition hover:text-foreground">
                   {item.label}
                 </Link>
               </li>
@@ -40,19 +40,19 @@ export function Footer() {
           <h3 className="text-sm font-semibold text-foreground">お問い合わせ</h3>
           <ul className="mt-4 space-y-3 text-sm text-muted">
             <li className="flex items-start gap-3">
-              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" />
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-subtle" />
               <a href={`tel:${site.phone.replace(/-/g, "")}`} className="hover:text-foreground">
                 {site.phone}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" />
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-subtle" />
               <a href={`mailto:${site.email}`} className="hover:text-foreground">
                 {site.email}
               </a>
             </li>
             <li className="flex items-start gap-3">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-aqua-600" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-subtle" />
               <span>{site.address}</span>
             </li>
           </ul>
@@ -63,7 +63,7 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted md:flex-row lg:px-8">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p className="font-display tracking-widest text-aqua-700">{site.tagline}</p>
+          <p className="font-display tracking-[0.3em] uppercase text-subtle">{site.tagline}</p>
         </div>
       </div>
     </footer>
