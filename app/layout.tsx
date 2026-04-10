@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Shippori_Mincho } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Zen_Old_Mincho } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -7,17 +7,17 @@ import { SakuraPetals } from "@/components/effects/sakura-petals";
 import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
 import { site } from "@/lib/site";
 
-const notoSansJp = Noto_Sans_JP({
-  variable: "--font-noto-sans-jp",
+const zenKakuGothic = Zen_Kaku_Gothic_New({
+  variable: "--font-sans-jp",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700", "900"],
   display: "swap",
 });
 
-const shipporiMincho = Shippori_Mincho({
-  variable: "--font-shippori-mincho",
+const zenOldMincho = Zen_Old_Mincho({
+  variable: "--font-display-jp",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "700", "900"],
   display: "swap",
 });
 
@@ -54,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSansJp.variable} ${shipporiMincho.variable} h-full antialiased`}
+      className={`${zenKakuGothic.variable} ${zenOldMincho.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <LocalBusinessJsonLd />

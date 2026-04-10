@@ -85,11 +85,10 @@ export function Services() {
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             Services
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            幅広いメニューで、<br className="md:hidden" />
-            あらゆるお掃除のお困りごとに
+          <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.15] tracking-display text-foreground text-balance md:text-[56px] lg:text-[68px]">
+            あらゆる<br className="md:hidden" />お掃除の困りごとに。
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted">
+          <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             ご家庭の日常清掃から、企業様施設の大規模・定期清掃まで。
             特許技術に裏付けられた品質で、ご依頼いただいたすべての現場に全力で向き合います。
           </p>

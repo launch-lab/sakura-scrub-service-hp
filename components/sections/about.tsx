@@ -13,8 +13,8 @@ export function About() {
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             Message
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            ごあいさつ
+          <h2 className="mt-6 font-display text-[40px] font-bold leading-[1.1] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
+            ごあいさつ。
           </h2>
         </Reveal>
 

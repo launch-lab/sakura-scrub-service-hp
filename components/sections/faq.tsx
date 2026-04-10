@@ -35,8 +35,8 @@ export function Faq() {
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             FAQ
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            よくある質問
+          <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+            よくあるご質問。
           </h2>
         </Reveal>
 

@@ -43,10 +43,10 @@ export function Works() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
               Works
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-              施工事例
+            <h2 className="mt-6 font-display text-[40px] font-bold leading-[1.05] tracking-display text-foreground md:text-[72px] lg:text-[92px]">
+              施工事例。
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted">
+            <p className="mt-6 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
               実際の現場写真をご紹介します。ご家庭から法人施設まで、幅広い現場での
               施工実績をご覧ください。
             </p>

@@ -23,18 +23,18 @@ export function Hero() {
             特許技術による防カビ・レジオネラ対策
           </div>
 
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.15] tracking-tight text-foreground text-balance md:text-5xl lg:text-6xl">
+          <h1 className="mt-8 font-display text-[44px] font-bold leading-[1.05] tracking-display text-foreground text-balance md:text-[72px] lg:text-[92px]">
             清潔で、
             <span className="relative inline-block">
               <span className="relative z-10">快適</span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-sakura-100" />
+              <span className="absolute inset-x-0 bottom-2 -z-0 h-4 bg-sakura-100 md:h-5" />
             </span>
             な空間を。
             <br />
-            ひとつひとつ、ていねいに。
+            <span className="text-foreground/80">ひとつひとつ、ていねいに。</span>
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+          <p className="mt-8 max-w-xl text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             エアコン分解洗浄・浴室配管クリーニング・ハウスクリーニングから、
             企業様施設の定期清掃まで。国が認定した特許技術で、普段のお掃除では落とせない
             汚れとカビを根本から解決します。
@@ -57,18 +57,24 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-border/70 pt-8">
+          <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-border pt-10">
             <div>
-              <dt className="text-xs text-muted">認定特許</dt>
-              <dd className="mt-1 font-display text-2xl font-bold text-foreground">2<span className="ml-0.5 text-base text-muted">件</span></dd>
+              <dt className="text-[11px] uppercase tracking-[0.15em] text-subtle">Patent</dt>
+              <dd className="mt-3 font-display text-4xl font-bold leading-none text-foreground font-numeric md:text-5xl">
+                2<span className="ml-1 align-top text-sm font-medium text-muted">件</span>
+              </dd>
             </div>
             <div>
-              <dt className="text-xs text-muted">対応メニュー</dt>
-              <dd className="mt-1 font-display text-2xl font-bold text-foreground">8<span className="ml-0.5 text-base text-muted">種類+</span></dd>
+              <dt className="text-[11px] uppercase tracking-[0.15em] text-subtle">Menu</dt>
+              <dd className="mt-3 font-display text-4xl font-bold leading-none text-foreground font-numeric md:text-5xl">
+                8<span className="ml-1 align-top text-sm font-medium text-muted">種+</span>
+              </dd>
             </div>
             <div>
-              <dt className="text-xs text-muted">法人・個人</dt>
-              <dd className="mt-1 font-display text-2xl font-bold text-foreground">両対応</dd>
+              <dt className="text-[11px] uppercase tracking-[0.15em] text-subtle">Client</dt>
+              <dd className="mt-3 font-display text-4xl font-bold leading-none text-foreground md:text-5xl">
+                両対応
+              </dd>
             </div>
           </dl>
         </motion.div>

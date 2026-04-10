@@ -46,11 +46,11 @@ export function Strengths() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
               Our Strengths
             </p>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
-              キレイにするだけでは、<br />
-              終わらせません。
+            <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+              キレイにする、<br />
+              だけじゃない。
             </h2>
-            <p className="mt-6 text-base leading-relaxed text-muted">
+            <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
               桜 Scrub サービスが目指すのは「清潔で快適な空間」の提供です。
               見た目のキレイさだけでなく、カビ・レジオネラ菌といった目に見えない汚れまで
               特許技術で根本から解決。お客様の健康と安全をお守りします。
@@ -77,24 +77,40 @@ export function Strengths() {
           </Reveal>
 
           <Reveal direction="left" delay={0.15} className="relative">
-            <div className="rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:p-10">
-              <div className="flex items-center gap-3">
-                <div className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium uppercase tracking-wider text-foreground/70">
-                  <Award className="h-3.5 w-3.5" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:p-12">
+              <div className="flex items-center justify-between">
+                <div className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/70">
+                  <Award className="h-3 w-3" />
                   Patent
                 </div>
-                <span className="text-xs text-muted">※ 一般社団法人 防カビ技研</span>
+                <span className="text-[11px] uppercase tracking-wider text-subtle">
+                  防カビ技研
+                </span>
               </div>
-              <h3 className="mt-5 font-display text-2xl font-bold text-foreground">
-                2 つの特許技術に裏付けられた品質
-              </h3>
-              <div className="mt-8 space-y-5">
+
+              <div className="mt-10 flex items-end gap-6">
+                <span
+                  className="font-display font-bold leading-[0.8] tracking-display-tight text-foreground font-numeric text-[140px] md:text-[180px]"
+                  aria-hidden
+                >
+                  2
+                </span>
+                <div className="pb-4">
+                  <p className="text-[11px] uppercase tracking-[0.15em] text-subtle">Patents</p>
+                  <p className="mt-2 font-display text-lg font-bold leading-tight text-foreground md:text-xl">
+                    認定された<br />
+                    特許技術
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-10 space-y-px rounded-2xl bg-border">
                 {patents.map((p) => (
                   <div
                     key={p.number}
-                    className="rounded-2xl border border-border bg-background/60 p-5"
+                    className="bg-surface p-5 first:rounded-t-2xl last:rounded-b-2xl"
                   >
-                    <p className="font-display text-xs font-medium uppercase tracking-[0.15em] text-subtle">
+                    <p className="font-display text-[11px] font-medium uppercase tracking-[0.15em] text-subtle">
                       {p.number}
                     </p>
                     <p className="mt-2 font-display text-lg font-bold text-foreground">

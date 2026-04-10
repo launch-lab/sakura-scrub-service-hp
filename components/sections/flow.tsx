@@ -36,10 +36,10 @@ export function Flow() {
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
             Flow
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            ご利用の流れ
+          <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+            ご利用の流れ。
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted">
+          <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             ご相談から施工完了まで、ていねいにサポートいたします。
           </p>
         </Reveal>
