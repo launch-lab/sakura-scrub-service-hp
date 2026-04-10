@@ -1,3 +1,5 @@
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+
 const faqs = [
   {
     q: "見積もりは無料ですか？",
@@ -29,39 +31,40 @@ export function Faq() {
   return (
     <section id="faq" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
-        <div className="text-center">
+        <Reveal className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
             FAQ
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             よくある質問
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 divide-y divide-border rounded-3xl border border-border bg-surface shadow-[var(--shadow-card)]">
-          {faqs.map((f) => (
-            <details
-              key={f.q}
-              className="group px-6 py-5 md:px-8 md:py-6 [&_summary::-webkit-details-marker]:hidden"
-            >
-              <summary className="flex cursor-pointer items-start justify-between gap-4">
-                <span className="flex items-start gap-3 font-display text-base font-semibold text-foreground md:text-lg">
-                  <span className="font-display text-base font-bold text-sakura-500">Q.</span>
-                  {f.q}
-                </span>
-                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border transition group-open:rotate-45 group-open:border-sakura-400 group-open:text-sakura-600">
-                  <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M6 1v10M1 6h10" />
-                  </svg>
-                </span>
-              </summary>
-              <div className="mt-4 flex gap-3 text-sm leading-relaxed text-muted md:text-[15px]">
-                <span className="font-display text-base font-bold text-aqua-600">A.</span>
-                <p>{f.a}</p>
-              </div>
-            </details>
-          ))}
-        </div>
+        <Reveal delay={0.1} className="mt-14 overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-card)]">
+          <RevealGroup stagger={0.06} className="divide-y divide-border">
+            {faqs.map((f) => (
+              <RevealItem as="div" key={f.q}>
+                <details className="group px-6 py-5 md:px-8 md:py-6 [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-start justify-between gap-4">
+                    <span className="flex items-start gap-3 font-display text-base font-semibold text-foreground md:text-lg">
+                      <span className="font-display text-base font-bold text-sakura-500">Q.</span>
+                      {f.q}
+                    </span>
+                    <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border transition group-open:rotate-45 group-open:border-sakura-400 group-open:text-sakura-600">
+                      <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                        <path d="M6 1v10M1 6h10" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="mt-4 flex gap-3 text-sm leading-relaxed text-muted md:text-[15px]">
+                    <span className="font-display text-base font-bold text-aqua-600">A.</span>
+                    <p>{f.a}</p>
+                  </div>
+                </details>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </Reveal>
       </div>
     </section>
   );

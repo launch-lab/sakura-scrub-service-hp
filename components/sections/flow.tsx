@@ -1,4 +1,5 @@
 import { CalendarCheck, ClipboardCheck, MessageSquare, Sparkles } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 
 const steps = [
   {
@@ -31,7 +32,7 @@ export function Flow() {
   return (
     <section id="flow" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
             Flow
           </p>
@@ -41,13 +42,14 @@ export function Flow() {
           <p className="mt-5 text-base leading-relaxed text-muted">
             ご相談から施工完了まで、ていねいにサポートいたします。
           </p>
-        </div>
+        </Reveal>
 
-        <ol className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup as="ol" stagger={0.12} className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => {
             const Icon = s.icon;
             return (
-              <li
+              <RevealItem
+                as="li"
                 key={s.step}
                 className="relative rounded-3xl border border-border bg-surface p-7 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
               >
@@ -69,10 +71,10 @@ export function Flow() {
                     className="absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-gradient-to-r from-sakura-300 to-transparent lg:block"
                   />
                 )}
-              </li>
+              </RevealItem>
             );
           })}
-        </ol>
+        </RevealGroup>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/effects/reveal";
 import { site } from "@/lib/site";
 
 export function About() {
@@ -6,16 +7,16 @@ export function About() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sakura-50/80 via-white to-aqua-50/60" />
 
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
-        <div className="text-center">
+        <Reveal className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
             Message
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             ごあいさつ
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 rounded-[2rem] border border-border bg-surface/80 p-8 backdrop-blur shadow-[var(--shadow-soft)] md:p-14">
+        <Reveal delay={0.15} className="mt-14 rounded-[2rem] border border-border bg-surface/80 p-8 backdrop-blur shadow-[var(--shadow-soft)] md:p-14">
           <p className="font-display text-lg leading-relaxed text-foreground md:text-xl">
             弊社ホームページをご覧いただきまして、誠にありがとうございます。
           </p>
@@ -50,7 +51,7 @@ export function About() {
               </p>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

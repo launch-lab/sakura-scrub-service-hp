@@ -1,4 +1,5 @@
 import { Award, FlaskConical, ShieldCheck } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 
 const patents = [
   {
@@ -42,7 +43,7 @@ export function Strengths() {
       <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-background to-transparent" />
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <div>
+          <Reveal direction="up">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
               Our Strengths
             </p>
@@ -56,11 +57,11 @@ export function Strengths() {
               特許技術で根本から解決。お客様の健康と安全をお守りします。
             </p>
 
-            <ul className="mt-10 space-y-5">
+            <RevealGroup as="ul" stagger={0.12} delay={0.2} className="mt-10 space-y-5">
               {strengths.map((s) => {
                 const Icon = s.icon;
                 return (
-                  <li key={s.title} className="flex gap-4">
+                  <RevealItem as="li" direction="up" key={s.title} className="flex gap-4">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-sakura-500 text-white shadow-[var(--shadow-card)]">
                       <Icon className="h-5 w-5" />
                     </div>
@@ -70,13 +71,13 @@ export function Strengths() {
                       </h3>
                       <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
                     </div>
-                  </li>
+                  </RevealItem>
                 );
               })}
-            </ul>
-          </div>
+            </RevealGroup>
+          </Reveal>
 
-          <div className="relative">
+          <Reveal direction="left" delay={0.15} className="relative">
             <div className="rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:p-10">
               <div className="flex items-center gap-3">
                 <div className="inline-flex items-center gap-2 rounded-full bg-sakura-50 px-3 py-1 text-xs font-semibold text-sakura-700">
@@ -108,7 +109,7 @@ export function Strengths() {
 
             <div className="absolute -right-3 -top-3 -z-10 h-24 w-24 rounded-full bg-sakura-200/60 blur-2xl" />
             <div className="absolute -bottom-4 -left-6 -z-10 h-28 w-28 rounded-full bg-aqua-200/60 blur-2xl" />
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 
 type Service = {
   title: string;
@@ -80,7 +81,7 @@ export function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
             Services
           </p>
@@ -92,13 +93,14 @@ export function Services() {
             ご家庭の日常清掃から、企業様施設の大規模・定期清掃まで。
             特許技術に裏付けられた品質で、ご依頼いただいたすべての現場に全力で向き合います。
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <RevealGroup stagger={0.08} className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((s) => {
             const Icon = s.icon;
             return (
-              <article
+              <RevealItem
+                as="article"
                 key={s.title}
                 className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
               >
@@ -138,10 +140,10 @@ export function Services() {
                     {s.description}
                   </p>
                 </div>
-              </article>
+              </RevealItem>
             );
           })}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );

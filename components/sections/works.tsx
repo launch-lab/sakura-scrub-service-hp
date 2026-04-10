@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 
 const works = [
   {
@@ -37,7 +38,7 @@ export function Works() {
   return (
     <section id="works" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+        <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
               Works
@@ -53,11 +54,12 @@ export function Works() {
           <p className="text-xs text-muted">
             ※ 今後、ブログ・事例ページから詳細を随時追加予定
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
+        <RevealGroup stagger={0.1} className="mt-14 grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
           {works.map((w, i) => (
-            <figure
+            <RevealItem
+              as="figure"
               key={w.src}
               className={`group relative overflow-hidden rounded-3xl border border-border bg-surface shadow-[var(--shadow-card)] ${
                 i === 0 ? "md:col-span-2 md:row-span-2" : ""
@@ -81,9 +83,9 @@ export function Works() {
                   {w.title}
                 </p>
               </figcaption>
-            </figure>
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
       </div>
     </section>
   );
