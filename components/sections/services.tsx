@@ -82,11 +82,14 @@ export function Services() {
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
-            Services
+          <p className="flex items-center justify-center gap-2 font-italic-display text-base text-muted">
+            <span className="h-1 w-1 rounded-full bg-sakura-500" />
+            services
           </p>
-          <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.15] tracking-display text-foreground text-balance md:text-[56px] lg:text-[68px]">
-            あらゆる<br className="md:hidden" />お掃除の困りごとに。
+          <h2 className="mt-6 text-[36px] font-medium leading-[1.15] tracking-display text-foreground text-balance md:text-[56px] lg:text-[68px]">
+            <span className="font-italic-display font-normal text-sakura-600">あらゆる</span>
+            <br className="md:hidden" />
+            お掃除の困りごとに
           </h2>
           <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             ご家庭の日常清掃から、企業様施設の大規模・定期清掃まで。
@@ -112,7 +115,7 @@ export function Services() {
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       className="object-cover transition duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/50 via-transparent to-transparent" />
                     {s.highlight && (
                       <span className="absolute left-4 top-4 rounded-full bg-sakura-500 px-3 py-1 text-[10px] font-semibold tracking-wide text-white">
                         人気

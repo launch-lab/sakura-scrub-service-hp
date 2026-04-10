@@ -38,17 +38,20 @@ export function Strengths() {
   return (
     <section
       id="strengths"
-      className="relative overflow-hidden bg-background py-24 md:py-32"
+      className="relative overflow-hidden py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal direction="up">
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
-              Our Strengths
+            <p className="flex items-center gap-2 font-italic-display text-base text-muted">
+              <span className="h-1 w-1 rounded-full bg-sakura-500" />
+              our strengths
             </p>
-            <h2 className="mt-6 font-display text-[36px] font-bold leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+            <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
               キレイにする、<br />
-              だけじゃない。
+              <span className="font-italic-display font-normal text-sakura-600">
+                だけじゃない
+              </span>
             </h2>
             <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
               桜 Scrub サービスが目指すのは「清潔で快適な空間」の提供です。
@@ -90,14 +93,17 @@ export function Strengths() {
 
               <div className="mt-10 flex items-end gap-6">
                 <span
-                  className="font-display font-bold leading-[0.8] tracking-display-tight text-foreground font-numeric text-[140px] md:text-[180px]"
+                  className="font-italic-display leading-[0.78] text-foreground text-[200px] md:text-[260px]"
+                  style={{ fontWeight: 900 }}
                   aria-hidden
                 >
                   2
                 </span>
-                <div className="pb-4">
-                  <p className="text-[11px] uppercase tracking-[0.15em] text-subtle">Patents</p>
-                  <p className="mt-2 font-display text-lg font-bold leading-tight text-foreground md:text-xl">
+                <div className="pb-10">
+                  <p className="font-italic-display text-sm text-sakura-600">
+                    patents
+                  </p>
+                  <p className="mt-2 text-lg font-medium leading-tight text-foreground md:text-xl">
                     認定された<br />
                     特許技術
                   </p>

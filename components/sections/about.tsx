@@ -4,17 +4,15 @@ import { site } from "@/lib/site";
 export function About() {
   return (
     <section id="about" className="relative overflow-hidden py-24 md:py-32">
-      <div className="absolute inset-0 -z-10 bg-background" />
-      <div className="absolute inset-x-0 top-0 -z-10 h-px hairline" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-px hairline" />
-
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Reveal className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-subtle">
-            Message
+          <p className="flex items-center justify-center gap-2 font-italic-display text-base text-muted">
+            <span className="h-1 w-1 rounded-full bg-sakura-500" />
+            message
           </p>
-          <h2 className="mt-6 font-display text-[40px] font-bold leading-[1.1] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
-            ごあいさつ。
+          <h2 className="mt-6 text-[40px] font-medium leading-[1.1] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
+            ご
+            <span className="font-italic-display font-normal text-sakura-600">あいさつ</span>
           </h2>
         </Reveal>
 

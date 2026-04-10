@@ -23,7 +23,7 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/85 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-border)]"
+          ? "bg-surface/85 backdrop-blur-xl shadow-[0_1px_0_0_var(--color-border)]"
           : "bg-transparent",
       )}
     >
@@ -81,7 +81,7 @@ export function Header() {
 
       {open && (
         <div className="lg:hidden">
-          <div className="mx-5 mb-4 rounded-2xl border border-border bg-white/95 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
+          <div className="mx-5 mb-4 rounded-2xl border border-border bg-surface/95 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
             <nav className="flex flex-col gap-1">
               {nav.map((item) => (
                 <Link

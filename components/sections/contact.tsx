@@ -17,13 +17,14 @@ export function Contact() {
 
       <div className="mx-auto max-w-5xl px-5 lg:px-8">
         <Reveal className="text-white">
-          <p className="text-xs font-medium uppercase tracking-[0.3em] text-white/40">
-            Contact
+          <p className="flex items-center gap-2 font-italic-display text-base text-white/60">
+            <span className="h-1 w-1 rounded-full bg-sakura-400" />
+            contact
           </p>
-          <h2 className="mt-6 font-display text-4xl font-bold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
-            お気軽に、
+          <h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-display md:text-6xl lg:text-7xl">
+            <span className="font-italic-display font-normal text-sakura-300">お気軽に、</span>
             <br />
-            ご相談ください。
+            ご相談ください
           </h2>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
             お見積もりはすべて無料です。ご質問・ご要望など、どんな小さなことでも

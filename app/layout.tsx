@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Zen_Kaku_Gothic_New, Zen_Old_Mincho } from "next/font/google";
+import { Kaisei_HarunoUmi, Fraunces, Klee_One } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -7,17 +7,25 @@ import { SakuraPetals } from "@/components/effects/sakura-petals";
 import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
 import { site } from "@/lib/site";
 
-const zenKakuGothic = Zen_Kaku_Gothic_New({
-  variable: "--font-sans-jp",
+const kaiseiHarunoUmi = Kaisei_HarunoUmi({
+  variable: "--font-body-jp",
   subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
+  weight: ["400", "500", "700"],
   display: "swap",
 });
 
-const zenOldMincho = Zen_Old_Mincho({
-  variable: "--font-display-jp",
+const fraunces = Fraunces({
+  variable: "--font-display-en",
   subsets: ["latin"],
-  weight: ["500", "700", "900"],
+  weight: ["300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const kleeOne = Klee_One({
+  variable: "--font-script-jp",
+  subsets: ["latin"],
+  weight: ["400", "600"],
   display: "swap",
 });
 
@@ -54,9 +62,9 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${zenKakuGothic.variable} ${zenOldMincho.variable} h-full antialiased`}
+      className={`${kaiseiHarunoUmi.variable} ${fraunces.variable} ${kleeOne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LocalBusinessJsonLd />
         <SakuraPetals fixed count={28} />
         <Header />
