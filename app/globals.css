@@ -3,13 +3,14 @@
 @theme {
   --color-background: #ece9e2;
   --color-surface-warm: #e4e1da;
-  --color-foreground: #3a3a3e;
-  --color-muted: #76747a;
-  --color-subtle: #a8a6ab;
+  --color-foreground: #2a2a2e;
+  --color-muted: #6e6c72;
+  --color-subtle: #9b989e;
   --color-surface: #edeae3;
   --color-surface-cool: #e6e3db;
   --color-border: #d6d3cc;
-  --color-ink: #3b3a40;
+  --color-ink: #2b2b2f;
+  --color-cta: #4d4d52;
 
   --color-sakura-50: #fff2f8;
   --color-sakura-100: #ffe0ee;
@@ -137,6 +138,14 @@
     font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
   }
 
   .hairline {

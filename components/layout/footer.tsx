@@ -6,7 +6,7 @@ import { nav, site } from "@/lib/site";
 export function Footer() {
   return (
     <footer className="relative mt-24 border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-16 md:grid-cols-[1.2fr_1fr_1fr] lg:px-8">
         <div>
           <Image
             src="/images/brand/logo.png"
@@ -61,7 +61,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted md:flex-row lg:px-8">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted md:flex-row lg:px-8">
           <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
           <p className="font-italic-display text-base text-muted">{site.tagline}</p>
         </div>

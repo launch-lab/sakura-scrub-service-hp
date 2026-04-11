@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       <div className="absolute inset-0 -z-10 bg-grid opacity-50 mask-fade-b" />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,7 +32,7 @@ export function Hero() {
             </span>
             な空間を
             <br />
-            <span className="font-script text-[36px] font-normal text-foreground/70 md:text-[54px] lg:text-[68px]">
+            <span className="font-script text-[36px] font-normal text-foreground md:text-[54px] lg:text-[68px]">
               ひとつひとつ、ていねいに
             </span>
           </h1>
@@ -46,7 +46,7 @@ export function Hero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="#contact"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-7 py-4 text-base font-semibold text-background shadow-[var(--shadow-soft)] transition hover:bg-foreground/85"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-cta)] px-7 py-4 text-base font-semibold text-background shadow-[var(--shadow-soft)] transition hover:bg-foreground"
             >
               無料で見積もりを依頼
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />

@@ -27,7 +27,7 @@ export function Header() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label={site.name}>
           <Image
             src="/images/brand/logo.png"
@@ -62,7 +62,7 @@ export function Header() {
           </a>
           <Link
             href="#contact"
-            className="rounded-full bg-foreground px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-foreground/85"
+            className="rounded-full bg-[var(--color-cta)] px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-foreground"
           >
             無料見積もり
           </Link>
@@ -105,7 +105,7 @@ export function Header() {
               <Link
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-foreground py-3 text-center text-sm font-semibold text-background"
+                className="rounded-full bg-[var(--color-cta)] py-3 text-center text-sm font-semibold text-background"
               >
                 無料見積もり
               </Link>

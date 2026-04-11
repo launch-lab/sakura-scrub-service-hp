@@ -1,6 +1,38 @@
-import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
-import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { Reveal } from "@/components/effects/reveal";
+import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/site";
+
+const channels = [
+  {
+    icon: Phone,
+    label: "phone",
+    heading: site.phone,
+    href: `tel:${site.phone.replace(/-/g, "")}`,
+    note: site.hours,
+  },
+  {
+    icon: Mail,
+    label: "email",
+    heading: site.email,
+    href: `mailto:${site.email}`,
+    note: "24 時間受付",
+  },
+  {
+    icon: MessageCircle,
+    label: "line / booking",
+    heading: "近日公開",
+    href: null,
+    note: "LINE 予約準備中",
+  },
+  {
+    icon: MapPin,
+    label: "area",
+    heading: "対応エリア調整中",
+    href: null,
+    note: "まずはご相談ください",
+  },
+];
 
 export function Contact() {
   return (
@@ -11,83 +43,78 @@ export function Contact() {
         className="absolute inset-0 -z-10 opacity-60"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse at 85% 15%, rgba(236, 22, 131, 0.18) 0%, transparent 45%), radial-gradient(ellipse at 15% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 45%)",
+            "radial-gradient(ellipse at 85% 15%, rgba(236, 22, 131, 0.22) 0%, transparent 50%), radial-gradient(ellipse at 15% 85%, rgba(255, 255, 255, 0.04) 0%, transparent 45%)",
         }}
       />
 
-      <div className="mx-auto max-w-5xl px-5 lg:px-8">
-        <Reveal className="text-white">
-          <p className="flex items-center gap-2 font-italic-display text-base text-white/60">
-            <span className="h-1 w-1 rounded-full bg-sakura-400" />
-            contact
-          </p>
-          <h2 className="mt-6 text-4xl font-medium leading-[1.08] tracking-display md:text-6xl lg:text-7xl">
-            <span className="font-italic-display font-normal text-sakura-300">お気軽に、</span>
-            <br />
-            ご相談ください
-          </h2>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-white/70">
-            お見積もりはすべて無料です。ご質問・ご要望など、どんな小さなことでも
-            お気軽にお問い合わせください。原則 1 営業日以内にご返信いたします。
-          </p>
-        </Reveal>
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <Reveal className="text-white">
+            <p className="flex items-center gap-2 font-italic-display text-base text-white/60">
+              <span className="h-1 w-1 rounded-full bg-sakura-400" />
+              contact
+            </p>
+            <h2 className="mt-6 text-4xl font-medium leading-[1.05] tracking-display md:text-6xl lg:text-[76px]">
+              <span className="font-italic-display font-normal text-sakura-300">
+                お気軽に、
+              </span>
+              <br />
+              ご相談ください
+            </h2>
+            <p className="mt-8 max-w-md text-base leading-[1.9] text-white/70 md:text-[17px]">
+              お見積もりはすべて無料です。ご質問・ご要望など、どんな小さなことでも
+              お気軽にお問い合わせください。原則 1 営業日以内にご返信いたします。
+            </p>
 
-        <RevealGroup stagger={0.1} delay={0.2} className="mt-14 grid gap-px overflow-hidden rounded-2xl bg-white/10 md:grid-cols-3">
-          <RevealItem>
-            <a
-              href={`tel:${site.phone.replace(/-/g, "")}`}
-              className="group flex h-full items-center gap-4 bg-ink p-6 transition hover:bg-white/[0.03]"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-white/70">
-                <Phone className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <p className="text-[11px] uppercase tracking-wider text-white/40">Phone</p>
-                <p className="mt-0.5 font-display text-base font-semibold text-white">
-                  {site.phone}
+            <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2">
+              {channels.map((c) => {
+                const Icon = c.icon;
+                const content = (
+                  <>
+                    <div className="flex items-center justify-between">
+                      <span className="font-italic-display text-xs text-white/40">
+                        {c.label}
+                      </span>
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-white/60">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                    </div>
+                    <p className="mt-4 text-base font-medium text-white">{c.heading}</p>
+                    <p className="mt-1 text-xs text-white/50">{c.note}</p>
+                  </>
+                );
+
+                return (
+                  <li key={c.label}>
+                    {c.href ? (
+                      <a
+                        href={c.href}
+                        className="flex h-full flex-col bg-ink p-5 transition hover:bg-white/[0.04]"
+                      >
+                        {content}
+                      </a>
+                    ) : (
+                      <div className="flex h-full flex-col bg-ink p-5">{content}</div>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </Reveal>
+
+          <Reveal direction="left" delay={0.15}>
+            <div className="rounded-[2rem] border border-white/15 bg-white/[0.02] p-8 backdrop-blur md:p-10">
+              <div className="mb-8 flex items-baseline justify-between">
+                <p className="font-italic-display text-sm text-sakura-300">
+                  お問い合わせフォーム
+                </p>
+                <p className="font-italic-display text-xs text-white/40">
+                  — send us a message
                 </p>
               </div>
-              <ArrowRight className="h-4 w-4 text-white/40 transition group-hover:translate-x-1 group-hover:text-white" />
-            </a>
-          </RevealItem>
-
-          <RevealItem>
-            <a
-              href={`mailto:${site.email}`}
-              className="group flex h-full items-center gap-4 bg-ink p-6 transition hover:bg-white/[0.03]"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-white/70">
-                <Mail className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <p className="text-[11px] uppercase tracking-wider text-white/40">Email</p>
-                <p className="mt-0.5 font-display text-sm font-semibold text-white">
-                  {site.email}
-                </p>
-              </div>
-              <ArrowRight className="h-4 w-4 text-white/40 transition group-hover:translate-x-1 group-hover:text-white" />
-            </a>
-          </RevealItem>
-
-          <RevealItem>
-            <div className="flex h-full items-center gap-4 bg-ink p-6">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 text-white/70">
-                <MessageCircle className="h-5 w-5" />
-              </div>
-              <div className="flex-1">
-                <p className="text-[11px] uppercase tracking-wider text-white/40">LINE / 予約</p>
-                <p className="mt-0.5 font-display text-sm font-semibold text-white/60">近日公開予定</p>
-              </div>
+              <ContactForm />
             </div>
-          </RevealItem>
-        </RevealGroup>
-
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-white/50">
-          <span>受付時間 : {site.hours}</span>
-          <span className="h-1 w-1 rounded-full bg-white/30" />
-          <span>見積もり無料</span>
-          <span className="h-1 w-1 rounded-full bg-white/30" />
-          <span>個人 / 法人どちらも歓迎</span>
+          </Reveal>
         </div>
       </div>
     </section>

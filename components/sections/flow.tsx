@@ -31,7 +31,7 @@ const steps = [
 export function Flow() {
   return (
     <section id="flow" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="flex items-center justify-center gap-2 font-italic-display text-base text-muted">
             <span className="h-1 w-1 rounded-full bg-sakura-500" />

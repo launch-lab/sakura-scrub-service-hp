@@ -38,97 +38,105 @@ export function Strengths() {
   return (
     <section
       id="strengths"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden bg-ink py-28 text-white md:py-40"
     >
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-          <Reveal direction="up">
-            <p className="flex items-center gap-2 font-italic-display text-base text-muted">
-              <span className="h-1 w-1 rounded-full bg-sakura-500" />
-              our strengths
-            </p>
-            <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
-              キレイにする、<br />
-              <span className="font-italic-display font-normal text-sakura-600">
-                だけじゃない
-              </span>
-            </h2>
-            <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
-              桜 Scrub サービスが目指すのは「清潔で快適な空間」の提供です。
-              見た目のキレイさだけでなく、カビ・レジオネラ菌といった目に見えない汚れまで
-              特許技術で根本から解決。お客様の健康と安全をお守りします。
-            </p>
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage:
+            "radial-gradient(ellipse at 85% 10%, rgba(236, 22, 131, 0.25) 0%, transparent 45%), radial-gradient(ellipse at 15% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 50%)",
+        }}
+      />
 
-            <RevealGroup as="ul" stagger={0.12} delay={0.2} className="mt-10 space-y-5">
+      <div className="relative mx-auto max-w-[1440px] px-5 lg:px-8">
+        <Reveal>
+          <p className="flex items-center gap-2 font-italic-display text-base text-white/50">
+            <span className="h-1 w-1 rounded-full bg-sakura-400" />
+            our strengths
+          </p>
+          <h2 className="mt-6 max-w-4xl text-[40px] font-medium leading-[1.05] tracking-display text-white md:text-[72px] lg:text-[96px]">
+            キレイにする、
+            <br />
+            <span className="font-italic-display font-normal text-sakura-300">
+              だけじゃない
+            </span>
+          </h2>
+        </Reveal>
+
+        <div className="mt-20 grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
+          <Reveal direction="up" delay={0.1} className="relative">
+            <span
+              aria-hidden
+              className="block font-italic-display leading-[0.78] text-[280px] text-white md:text-[420px] lg:text-[520px]"
+              style={{ fontWeight: 900 }}
+            >
+              2
+            </span>
+            <div className="absolute bottom-4 right-0 text-right md:bottom-10">
+              <p className="font-italic-display text-base text-sakura-300 md:text-lg">
+                patents
+              </p>
+              <p className="mt-1 text-base font-medium leading-tight text-white/80 md:text-lg">
+                国土交通省・経済産業省<br />
+                認定の特許技術
+              </p>
+            </div>
+          </Reveal>
+
+          <div className="flex flex-col justify-center gap-10">
+            <Reveal direction="up" delay={0.2}>
+              <p className="text-base leading-[1.95] text-white/70 md:text-[17px]">
+                桜 Scrub サービスが目指すのは「清潔で快適な空間」の提供です。
+                見た目のキレイさだけでなく、カビ・レジオネラ菌といった目に見えない汚れまで
+                特許技術で根本から解決。お客様の健康と安全をお守りします。
+              </p>
+            </Reveal>
+
+            <RevealGroup as="ul" stagger={0.12} delay={0.35} className="space-y-6">
               {strengths.map((s) => {
                 const Icon = s.icon;
                 return (
-                  <RevealItem as="li" direction="up" key={s.title} className="flex gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-foreground text-background shadow-[var(--shadow-card)]">
+                  <RevealItem
+                    as="li"
+                    direction="up"
+                    key={s.title}
+                    className="flex gap-4 border-b border-white/10 pb-6 last:border-0 last:pb-0"
+                  >
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <h3 className="font-display text-lg font-semibold text-foreground">
-                        {s.title}
-                      </h3>
-                      <p className="mt-1 text-sm leading-relaxed text-muted">{s.body}</p>
+                      <h3 className="text-lg font-medium text-white">{s.title}</h3>
+                      <p className="mt-1 text-sm leading-relaxed text-white/60">{s.body}</p>
                     </div>
                   </RevealItem>
                 );
               })}
             </RevealGroup>
-          </Reveal>
-
-          <Reveal direction="left" delay={0.15} className="relative">
-            <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] md:p-12">
-              <div className="flex items-center justify-between">
-                <div className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-foreground/70">
-                  <Award className="h-3 w-3" />
-                  Patent
-                </div>
-                <span className="text-[11px] uppercase tracking-wider text-subtle">
-                  防カビ技研
-                </span>
-              </div>
-
-              <div className="mt-10 flex items-end gap-6">
-                <span
-                  className="font-italic-display leading-[0.78] text-foreground text-[200px] md:text-[260px]"
-                  style={{ fontWeight: 900 }}
-                  aria-hidden
-                >
-                  2
-                </span>
-                <div className="pb-10">
-                  <p className="font-italic-display text-sm text-sakura-600">
-                    patents
-                  </p>
-                  <p className="mt-2 text-lg font-medium leading-tight text-foreground md:text-xl">
-                    認定された<br />
-                    特許技術
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-10 space-y-px rounded-2xl bg-border">
-                {patents.map((p) => (
-                  <div
-                    key={p.number}
-                    className="bg-surface p-5 first:rounded-t-2xl last:rounded-b-2xl"
-                  >
-                    <p className="font-display text-[11px] font-medium uppercase tracking-[0.15em] text-subtle">
-                      {p.number}
-                    </p>
-                    <p className="mt-2 font-display text-lg font-bold text-foreground">
-                      {p.title}
-                    </p>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{p.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
+
+        <Reveal delay={0.15} className="mt-20">
+          <div className="grid gap-px overflow-hidden rounded-3xl bg-white/10 md:grid-cols-2">
+            {patents.map((p) => (
+              <div key={p.number} className="bg-ink p-8 md:p-10">
+                <div className="flex items-start justify-between gap-4">
+                  <p className="font-italic-display text-xs uppercase text-sakura-300">
+                    {p.number}
+                  </p>
+                  <Award className="h-4 w-4 text-white/40" />
+                </div>
+                <p className="mt-4 text-2xl font-medium text-white md:text-3xl">
+                  {p.title}
+                </p>
+                <p className="mt-4 text-sm leading-relaxed text-white/60">
+                  {p.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );
