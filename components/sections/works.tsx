@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 
@@ -43,15 +46,16 @@ const works = [
 
 function WorkCard({ work }: { work: (typeof works)[number] }) {
   return (
-    <figure className="group flex w-[300px] shrink-0 flex-col md:w-[360px]">
+    <figure className="group pointer-events-none flex w-[220px] shrink-0 flex-col sm:w-[260px] md:w-[320px] lg:w-[360px]">
       <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-background">
         <Image
           src={work.src}
           alt={work.title}
           width={400}
           height={500}
-          sizes="360px"
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+          sizes="(max-width: 640px) 220px, (max-width: 1024px) 320px, 360px"
+          className="h-full w-full object-cover"
+          draggable={false}
         />
       </div>
       <figcaption className="mt-5 flex flex-col gap-2 px-1">
@@ -62,7 +66,7 @@ function WorkCard({ work }: { work: (typeof works)[number] }) {
           <span className="h-px flex-1 bg-border" />
           <span className="font-accent text-xs text-subtle">{work.tag}</span>
         </div>
-        <h3 className="text-lg font-medium leading-tight text-foreground md:text-xl">
+        <h3 className="text-base font-medium leading-tight text-foreground md:text-lg lg:text-xl">
           {work.title}
         </h3>
       </figcaption>
@@ -71,8 +75,83 @@ function WorkCard({ work }: { work: (typeof works)[number] }) {
 }
 
 export function Works() {
-  // NOTE: 原本 + 複製の 2 セットで無限ループ。1 セット分ぶんを -50% 移動するだけで連続する
+  // NOTE: 原本 + 複製の 2 セットでドラッグ / 自動スクロールを無限ループ
   const loop = [...works, ...works];
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+  const startX = useRef(0);
+  const startScroll = useRef(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    let rafId = 0;
+    let lastTime = performance.now();
+    // NOTE: iOS Safari は scrollLeft のサブピクセル値を無視するため、
+    //       累積値が 1px を超えるまで溜めてから整数ぶんだけ加算する
+    let accumulator = 0;
+    const pxPerMs = 0.05; // ~50 px/sec
+
+    const tick = (now: number) => {
+      const dt = now - lastTime;
+      lastTime = now;
+
+      if (!isDragging.current) {
+        accumulator += dt * pxPerMs;
+        if (accumulator >= 1) {
+          const step = Math.floor(accumulator);
+          el.scrollLeft += step;
+          accumulator -= step;
+        }
+
+        // 原本の終端 (= 全幅の半分) を超えたら巻き戻して無限ループ
+        const halfWidth = el.scrollWidth / 2;
+        if (el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        }
+      }
+
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafId);
+  }, []);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    // NOTE: タッチはブラウザの native overflow-x スクロールに任せ、
+    //       マウスの場合のみ JS で scrollLeft を上書きしてドラッグ対応
+    isDragging.current = true;
+    if (e.pointerType === "mouse") {
+      startX.current = e.clientX;
+      startScroll.current = el.scrollLeft;
+      el.setPointerCapture(e.pointerId);
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    const el = scrollRef.current;
+    if (!el || !isDragging.current) return;
+    const dx = e.clientX - startX.current;
+    el.scrollLeft = startScroll.current - dx;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    isDragging.current = false;
+    if (
+      e.pointerType === "mouse" &&
+      el.hasPointerCapture(e.pointerId)
+    ) {
+      el.releasePointerCapture(e.pointerId);
+    }
+  };
 
   return (
     <section id="works" className="relative py-24 md:py-32">
@@ -99,9 +178,17 @@ export function Works() {
       <Reveal
         direction="left"
         delay={0.1}
-        className="mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+        className="mx-auto mt-14 max-w-[1440px] overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
       >
-        <div className="animate-marquee flex gap-6 md:gap-8">
+        <div
+          ref={scrollRef}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerCancel={handlePointerUp}
+          className="scrollbar-none flex cursor-grab select-none gap-5 overflow-x-auto px-5 active:cursor-grabbing md:gap-7 lg:px-8"
+          style={{ scrollbarWidth: "none" }}
+        >
           {loop.map((w, i) => (
             <WorkCard key={`${w.src}-${i}`} work={w} />
           ))}
