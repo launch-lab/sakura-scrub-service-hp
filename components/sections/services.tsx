@@ -25,8 +25,8 @@ export function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
-        <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-end md:gap-16">
-          <div className="shrink-0">
+        <Reveal className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
+          <div>
             <p className="flex items-center gap-2 font-accent text-base text-muted">
               <SakuraMark className="h-3 w-3 text-sakura-500" />
               services
@@ -34,11 +34,11 @@ export function Services() {
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[56px] lg:text-[72px]">
               施工
               <span className="font-accent font-normal text-sakura-500">
-                メニュー
+                MENU
               </span>
             </h2>
           </div>
-          <p className="w-full text-sm leading-[1.95] text-muted md:flex-1 md:pb-4 md:text-[15px]">
+          <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
             企業様・管理会社様への店舗、事務所、社員寮、社用車等のスポット・定期清掃、
             賃貸物件の退去後の清掃も承っております。
           </p>

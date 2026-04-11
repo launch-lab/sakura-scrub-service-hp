@@ -78,7 +78,7 @@ export function Works() {
     <section id="works" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div className="max-w-2xl">
+          <div>
             <p className="flex items-center gap-2 font-accent text-base text-muted">
               <SakuraMark className="h-3 w-3 text-sakura-500" />
               works
@@ -89,11 +89,10 @@ export function Works() {
                 事例
               </span>
             </h2>
-            <p className="mt-6 max-w-xl text-base font-normal leading-[1.9] text-muted md:text-[17px]">
-              実際の現場写真をご紹介します。ご家庭から法人施設まで、幅広い現場での
-              施工実績をご覧ください。
-            </p>
           </div>
+          <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
+            実際の現場写真をご紹介します。ご家庭から法人施設まで、幅広い現場での施工実績をご覧ください。
+          </p>
         </Reveal>
       </div>
 
