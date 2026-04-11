@@ -3,8 +3,8 @@ import {
   Handshake,
   Headset,
   UsersThree,
-  type Icon,
 } from "@phosphor-icons/react/dist/ssr";
+import type { Icon } from "@phosphor-icons/react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 
