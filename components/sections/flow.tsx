@@ -33,13 +33,13 @@ export function Flow() {
     <section id="flow" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="flex items-center justify-center gap-2 font-italic-display text-base text-muted">
+          <p className="flex items-center justify-center gap-2 font-accent text-base text-muted">
             <span className="h-1 w-1 rounded-full bg-sakura-500" />
             flow
           </p>
           <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
             ご利用の
-            <span className="font-italic-display font-normal text-sakura-600">流れ</span>
+            <span className="font-accent font-normal text-sakura-600">流れ</span>
           </h2>
           <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             ご相談から施工完了まで、ていねいにサポートいたします。

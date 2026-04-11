@@ -46,13 +46,13 @@ export function Works() {
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <p className="flex items-center gap-2 font-italic-display text-base text-muted">
+            <p className="flex items-center gap-2 font-accent text-base text-muted">
               <span className="h-1 w-1 rounded-full bg-sakura-500" />
               works
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[72px] lg:text-[92px]">
               施工
-              <span className="font-italic-display font-normal text-sakura-600">
+              <span className="font-accent font-normal text-sakura-600">
                 事例
               </span>
             </h2>
@@ -62,7 +62,7 @@ export function Works() {
             </p>
           </div>
           <div className="hidden items-center gap-3 text-xs text-muted md:flex">
-            <span className="font-italic-display text-base">scroll →</span>
+            <span className="font-accent text-base">scroll →</span>
           </div>
         </Reveal>
       </div>
@@ -85,13 +85,13 @@ export function Works() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent" />
 
-                <span className="absolute left-6 top-6 font-italic-display text-4xl text-white/80 md:text-5xl">
+                <span className="absolute left-6 top-6 font-accent text-4xl text-white/80 md:text-5xl">
                   {w.index}
                 </span>
               </div>
 
               <figcaption className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 font-italic-display text-xs text-white backdrop-blur">
+                <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 font-accent text-xs text-white backdrop-blur">
                   {w.tag}
                 </span>
                 <p className="mt-3 text-xl font-medium text-white md:text-2xl">

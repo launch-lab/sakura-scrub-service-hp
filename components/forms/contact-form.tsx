@@ -28,7 +28,7 @@ export function ContactForm() {
           <CheckCircle2 className="h-6 w-6" />
         </div>
         <div>
-          <p className="font-italic-display text-sm text-sakura-300">thank you</p>
+          <p className="font-accent text-sm text-sakura-300">thank you</p>
           <p className="mt-2 text-2xl font-medium md:text-3xl">
             お問い合わせを
             <br className="md:hidden" />
@@ -130,7 +130,7 @@ function Field({ name, label, type = "text", required, optional, defaultValue, e
       <span className="flex items-center gap-2 text-xs text-white/60">
         {label}
         {required && <span className="text-sakura-300">*</span>}
-        {optional && <span className="font-italic-display text-[11px] text-white/40">optional</span>}
+        {optional && <span className="font-accent text-[11px] text-white/40">optional</span>}
       </span>
       <input
         name={name}

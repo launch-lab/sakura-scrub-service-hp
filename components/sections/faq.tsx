@@ -32,12 +32,12 @@ export function Faq() {
     <section id="faq" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Reveal className="text-center">
-          <p className="flex items-center justify-center gap-2 font-italic-display text-base text-muted">
+          <p className="flex items-center justify-center gap-2 font-accent text-base text-muted">
             <span className="h-1 w-1 rounded-full bg-sakura-500" />
             faq
           </p>
           <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
-            <span className="font-italic-display font-normal text-sakura-600">よくある</span>
+            <span className="font-accent font-normal text-sakura-600">よくある</span>
             ご質問
           </h2>
         </Reveal>

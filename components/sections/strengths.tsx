@@ -51,14 +51,14 @@ export function Strengths() {
 
       <div className="relative mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal>
-          <p className="flex items-center gap-2 font-italic-display text-base text-white/50">
+          <p className="flex items-center gap-2 font-accent text-base text-white/50">
             <span className="h-1 w-1 rounded-full bg-sakura-400" />
             our strengths
           </p>
           <h2 className="mt-6 max-w-4xl text-[40px] font-medium leading-[1.05] tracking-display text-white md:text-[72px] lg:text-[96px]">
             キレイにする、
             <br />
-            <span className="font-italic-display font-normal text-sakura-300">
+            <span className="font-accent font-normal text-sakura-300">
               だけじゃない
             </span>
           </h2>
@@ -68,13 +68,13 @@ export function Strengths() {
           <Reveal direction="up" delay={0.1} className="relative">
             <span
               aria-hidden
-              className="block font-italic-display leading-[0.78] text-[280px] text-white md:text-[420px] lg:text-[520px]"
+              className="block font-accent leading-[0.78] text-[280px] text-white md:text-[420px] lg:text-[520px]"
               style={{ fontWeight: 900 }}
             >
               2
             </span>
             <div className="absolute bottom-4 right-0 text-right md:bottom-10">
-              <p className="font-italic-display text-base text-sakura-300 md:text-lg">
+              <p className="font-accent text-base text-sakura-300 md:text-lg">
                 patents
               </p>
               <p className="mt-1 text-base font-medium leading-tight text-white/80 md:text-lg">
@@ -124,7 +124,7 @@ export function Strengths() {
             {patents.map((p) => (
               <div key={p.number} className="bg-ink p-8 md:p-10">
                 <div className="flex items-start justify-between gap-4">
-                  <p className="font-italic-display text-xs uppercase text-sakura-300">
+                  <p className="font-accent text-xs uppercase text-sakura-300">
                     {p.number}
                   </p>
                   <Award className="h-4 w-4 text-white/40" />

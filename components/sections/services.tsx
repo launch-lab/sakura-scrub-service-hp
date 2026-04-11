@@ -26,14 +26,14 @@ export function Services() {
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end md:gap-12">
           <div className="max-w-3xl">
-            <p className="flex items-center gap-2 font-italic-display text-base text-muted">
+            <p className="flex items-center gap-2 font-accent text-base text-muted">
               <span className="h-1 w-1 rounded-full bg-sakura-500" />
               services
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
               クリーニング
               <br />
-              <span className="font-italic-display font-normal text-sakura-600">
+              <span className="font-accent font-normal text-sakura-600">
                 メニュー
               </span>
             </h2>
@@ -74,7 +74,7 @@ export function Services() {
             <h3 className="text-lg font-medium text-foreground md:text-xl">
               ハウスクリーニングメニュー
             </h3>
-            <span className="font-italic-display text-sm text-subtle">
+            <span className="font-accent text-sm text-subtle">
               house cleaning
             </span>
           </div>
@@ -84,7 +84,7 @@ export function Services() {
                 key={item}
                 className="flex items-baseline gap-5 border-b border-border py-5 text-foreground/85"
               >
-                <span className="font-italic-display text-xs text-subtle">
+                <span className="font-accent text-xs text-subtle">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-base md:text-[17px]">{item}</span>
