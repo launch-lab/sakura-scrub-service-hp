@@ -53,11 +53,21 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-subtle" />
-              <span suppressHydrationWarning>
+              {/* NOTE: 自前で a タグでラップすることで iOS Safari が
+                  住所テキストに x-apple-data-detectors の a を挿入するのを防ぎ、
+                  同時にタップ時に Google Maps で開ける実用性も確保 */}
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  `${site.postalCode} ${site.address}`,
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
                 〒{site.postalCode}
                 <br />
                 {site.address}
-              </span>
+              </a>
             </li>
           </ul>
         </div>

@@ -55,7 +55,7 @@ export function Hero() {
           </span>
           <span
             className="mt-3 flex items-baseline whitespace-nowrap font-medium leading-[1]"
-            style={{ fontSize: "clamp(3rem, 11vw, 10rem)" }}
+            style={{ fontSize: "clamp(2rem, 9.5vw, 10rem)" }}
           >
             <span className="font-decor font-bold text-sakura-300">桜</span>
             <span className="relative mx-1 inline-block">
