@@ -58,7 +58,7 @@ export function Contact() {
       />
 
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-stretch lg:gap-20">
           <Reveal className="text-white">
             <p className="flex items-center gap-2 font-accent text-base text-white/60">
               <SakuraMark className="h-3 w-3 text-sakura-400" />
@@ -121,13 +121,17 @@ export function Contact() {
             </ul>
           </Reveal>
 
-          <Reveal direction="left" delay={0.15}>
-            <div className="rounded-2xl border border-white/15 bg-white/[0.02] p-6 backdrop-blur md:rounded-[2rem] md:p-10">
-              <div className="mb-8 flex items-baseline justify-between gap-3">
-                <p className="font-accent text-sm text-sakura-300">
+          <Reveal
+            direction="left"
+            delay={0.15}
+            className="lg:flex lg:h-full lg:flex-col lg:pt-[60px]"
+          >
+            <div className="flex min-w-0 flex-1 flex-col md:rounded-2xl md:border md:border-white/15 md:bg-white/[0.02] md:p-8 md:backdrop-blur lg:rounded-[2rem] lg:p-10">
+              <div className="mb-8 flex flex-col gap-1 md:mb-10 md:flex-row md:items-baseline md:justify-between md:gap-3">
+                <p className="text-lg font-medium text-white md:text-xl lg:text-2xl">
                   お問い合わせフォーム
                 </p>
-                <p className="font-accent text-xs text-white/40">
+                <p className="font-accent text-xs text-white/40 md:text-sm">
                   — send us a message
                 </p>
               </div>

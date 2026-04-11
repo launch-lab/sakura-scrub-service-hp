@@ -48,7 +48,11 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} noValidate className="flex flex-col gap-5">
+    <form
+      action={formAction}
+      noValidate
+      className="flex flex-1 flex-col gap-5"
+    >
       <div className="grid gap-5 md:grid-cols-2">
         <Field
           idPrefix={formId}
@@ -88,6 +92,7 @@ export function ContactForm() {
       </div>
 
       <TextareaField
+        fill
         idPrefix={formId}
         name="message"
         label="お問い合わせ内容"
@@ -102,8 +107,8 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="mt-2 flex items-center justify-between gap-4">
-        <p className="text-xs text-white/50">
+      <div className="mt-2 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-[11px] leading-relaxed text-white/50 sm:text-xs">
           送信いただいた情報は、お問い合わせ対応以外には使用しません
         </p>
         <SubmitButton />
@@ -193,11 +198,14 @@ function TextareaField({
   required,
   defaultValue,
   error,
-}: FieldProps) {
+  fill,
+}: FieldProps & { fill?: boolean }) {
   const fieldId = `${idPrefix}-${name}`;
   const errorId = `${fieldId}-error`;
   return (
-    <div className="flex flex-col gap-2">
+    <div
+      className={`flex flex-col gap-2 ${fill ? "flex-1 min-h-[180px]" : ""}`}
+    >
       <label
         htmlFor={fieldId}
         className="flex items-center gap-2 text-xs text-white/60"
@@ -214,11 +222,13 @@ function TextareaField({
         name={name}
         required={required}
         defaultValue={defaultValue}
-        rows={5}
+        rows={fill ? undefined : 5}
         aria-required={required || undefined}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? errorId : undefined}
-        className="resize-none rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-sakura-300/60 focus:outline-none focus:ring-2 focus:ring-sakura-300/20"
+        className={`resize-none rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-sakura-300/60 focus:outline-none focus:ring-2 focus:ring-sakura-300/20 ${
+          fill ? "min-h-0 flex-1" : ""
+        }`}
       />
       {error && (
         <span id={errorId} role="alert" className="text-xs text-sakura-300">
