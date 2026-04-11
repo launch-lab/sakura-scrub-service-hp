@@ -49,7 +49,7 @@ export function Faq() {
                 <details className="group px-6 py-5 md:px-8 md:py-6 [&_summary::-webkit-details-marker]:hidden">
                   <summary className="flex cursor-pointer items-start justify-between gap-4">
                     <span className="flex items-start gap-3 font-display text-base font-semibold text-foreground md:text-lg">
-                      <span className="font-display text-base font-bold text-subtle">Q.</span>
+                      <span className="font-accent text-base font-normal text-sky-500">Q.</span>
                       {f.q}
                     </span>
                     <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border transition group-open:rotate-45 group-open:border-foreground group-open:text-foreground">
@@ -59,7 +59,7 @@ export function Faq() {
                     </span>
                   </summary>
                   <div className="mt-4 flex gap-3 text-sm leading-relaxed text-muted md:text-[15px]">
-                    <span className="font-display text-base font-bold text-subtle">A.</span>
+                    <span className="font-accent text-base font-normal text-sakura-500">A.</span>
                     <p>{f.a}</p>
                   </div>
                 </details>

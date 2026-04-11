@@ -105,7 +105,7 @@ export function Strengths() {
                     key={s.title}
                     className="flex gap-4 border-b border-white/10 pb-6 last:border-0 last:pb-0"
                   >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/5 text-white">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-sky-300/30 bg-sky-500/5 text-sky-300">
                       <Icon className="h-5 w-5" />
                     </div>
                     <div>
@@ -124,10 +124,10 @@ export function Strengths() {
             {patents.map((p) => (
               <div key={p.number} className="bg-ink p-8 md:p-10">
                 <div className="flex items-start justify-between gap-4">
-                  <p className="font-accent text-xs uppercase text-sakura-300">
+                  <p className="font-accent text-xs uppercase text-sky-300">
                     {p.number}
                   </p>
-                  <Award className="h-4 w-4 text-white/40" />
+                  <Award className="h-4 w-4 text-sky-300/60" />
                 </div>
                 <p className="mt-4 text-2xl font-medium text-white md:text-3xl">
                   {p.title}

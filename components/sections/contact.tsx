@@ -10,6 +10,7 @@ const channels = [
     heading: site.phone,
     href: `tel:${site.phone.replace(/-/g, "")}`,
     note: site.hours,
+    accent: "sky" as const,
   },
   {
     icon: Mail,
@@ -17,6 +18,7 @@ const channels = [
     heading: site.email,
     href: `mailto:${site.email}`,
     note: "24 時間受付",
+    accent: "sakura" as const,
   },
   {
     icon: MessageCircle,
@@ -24,6 +26,7 @@ const channels = [
     heading: "近日公開",
     href: null,
     note: "LINE 予約準備中",
+    accent: "sakura" as const,
   },
   {
     icon: MapPin,
@@ -31,6 +34,7 @@ const channels = [
     heading: "対応エリア調整中",
     href: null,
     note: "まずはご相談ください",
+    accent: "sky" as const,
   },
 ];
 
@@ -69,13 +73,19 @@ export function Contact() {
             <ul className="mt-10 grid gap-px overflow-hidden rounded-2xl bg-white/10 sm:grid-cols-2">
               {channels.map((c) => {
                 const Icon = c.icon;
+                const accentClass =
+                  c.accent === "sky"
+                    ? "border-sky-300/40 text-sky-300"
+                    : "border-sakura-300/40 text-sakura-300";
                 const content = (
                   <>
                     <div className="flex items-center justify-between">
                       <span className="font-accent text-xs text-white/40">
                         {c.label}
                       </span>
-                      <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-white/60">
+                      <div
+                        className={`flex h-8 w-8 items-center justify-center rounded-lg border ${accentClass}`}
+                      >
                         <Icon className="h-4 w-4" />
                       </div>
                     </div>

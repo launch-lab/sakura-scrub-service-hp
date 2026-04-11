@@ -53,17 +53,17 @@ export function Flow() {
               <RevealItem
                 as="li"
                 key={s.step}
-                className="relative rounded-3xl border border-border bg-surface p-7 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+                className="group relative rounded-3xl border border-border bg-surface p-7 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-display text-4xl font-bold text-foreground/10">
+                  <span className="font-accent text-5xl font-normal text-sky-400/50">
                     {s.step}
                   </span>
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-foreground text-background shadow-[var(--shadow-card)]">
                     <Icon className="h-5 w-5" />
                   </div>
                 </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-foreground">
+                <h3 className="mt-5 text-lg font-medium text-foreground transition group-hover:text-sakura-600">
                   {s.title}
                 </h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-muted">{s.body}</p>

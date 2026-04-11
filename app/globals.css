@@ -23,16 +23,17 @@
   --color-sakura-800: #7a0041;
   --color-sakura-900: #50002b;
 
-  --color-aqua-50: #ecfbff;
-  --color-aqua-100: #d2f4ff;
-  --color-aqua-200: #a4e8fc;
-  --color-aqua-300: #6bd7f5;
-  --color-aqua-400: #2cbde6;
-  --color-aqua-500: #0aa3d1;
-  --color-aqua-600: #0081ab;
-  --color-aqua-700: #006788;
-  --color-aqua-800: #00506b;
-  --color-aqua-900: #003b50;
+  /* NOTE: ロゴのシアンをセカンダリーブランドカラーとして定義 */
+  --color-sky-50: #e8f8fc;
+  --color-sky-100: #ccf0f8;
+  --color-sky-200: #9ae1f0;
+  --color-sky-300: #5fcce3;
+  --color-sky-400: #2bb7d2;
+  --color-sky-500: #0e9cbb;
+  --color-sky-600: #067e9a;
+  --color-sky-700: #05647b;
+  --color-sky-800: #074e60;
+  --color-sky-900: #093c4a;
 
   --font-sans: var(--font-body-jp), "Yu Mincho", "Hiragino Mincho ProN", serif;
   --font-display: var(--font-display-en), var(--font-body-jp), "Yu Mincho", serif;
@@ -132,6 +133,10 @@
 
   .font-script {
     font-family: var(--font-script);
+  }
+
+  .font-decor {
+    font-family: var(--font-decor-jp), var(--font-body-jp), serif;
   }
 
   .font-accent {

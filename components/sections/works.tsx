@@ -62,7 +62,7 @@ export function Works() {
             </p>
           </div>
           <div className="hidden items-center gap-3 text-xs text-muted md:flex">
-            <span className="font-accent text-base">scroll →</span>
+            <span className="font-accent text-base text-sakura-500">scroll →</span>
           </div>
         </Reveal>
       </div>

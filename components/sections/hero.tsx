@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowRight, Droplets, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function Hero() {
@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       <div className="absolute inset-0 -z-10 bg-grid opacity-50 mask-fade-b" />
 
-      <div className="mx-auto grid max-w-[1440px] items-center gap-12 px-5 lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+      <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 lg:grid-cols-[1fr_1fr] lg:gap-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -28,17 +28,19 @@ export function Hero() {
             <span className="block text-base font-medium text-foreground/60 md:text-lg">
               株式会社
             </span>
-            <span className="mt-1 block whitespace-nowrap text-[40px] font-medium leading-[1.05] md:text-[64px] lg:text-[80px]">
-              <span className="text-sakura-500">桜</span>
-              <span className="relative inline-block">
-                <span className="relative z-10">scrub</span>
+            <span className="mt-1 flex items-baseline whitespace-nowrap text-[40px] font-medium leading-[1.05] md:text-[64px] lg:text-[80px]">
+              <span className="font-decor font-bold text-sakura-500">桜</span>
+              <span className="relative mx-1 inline-block">
+                <span className="font-accent relative z-10 font-normal">
+                  scrub
+                </span>
                 <span className="absolute inset-x-0 bottom-2 -z-0 h-4 bg-sakura-100 md:h-5" />
               </span>
               サービス
             </span>
           </h1>
 
-          <p className="mt-6 font-script text-[26px] font-normal leading-snug text-foreground md:text-[36px] lg:text-[44px]">
+          <p className="mt-6 text-[26px] font-normal italic leading-snug text-foreground md:text-[36px] lg:text-[44px]">
             清潔で快適な空間のご提供
           </p>
 
@@ -93,19 +95,19 @@ export function Hero() {
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-[var(--shadow-soft)] ring-1 ring-border">
             <Image
-              src="/images/works/aircon-cleaning.jpg"
-              alt="エアコン分解洗浄の様子"
+              src="/images/hero.jpg"
+              alt="壁掛けエアコンの分解洗浄作業"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              className="object-cover [object-position:30%_50%]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
           </div>
 
           <div className="absolute -left-4 top-10 hidden rounded-2xl border border-border bg-surface/95 p-4 shadow-[var(--shadow-soft)] backdrop-blur md:block">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-foreground/5 text-foreground">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
                 <ShieldCheck className="h-5 w-5" />
               </div>
               <div>
@@ -116,8 +118,15 @@ export function Hero() {
           </div>
 
           <div className="absolute -bottom-4 right-2 hidden rounded-2xl border border-border bg-surface/95 p-4 shadow-[var(--shadow-soft)] backdrop-blur md:block">
-            <p className="text-xs text-muted">防カビ技研</p>
-            <p className="font-display text-lg font-semibold text-foreground">湯泡美 正規施工店</p>
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-50 text-sky-600">
+                <Droplets className="h-5 w-5" />
+              </div>
+              <div>
+                <p className="text-xs text-muted">防カビ技研</p>
+                <p className="text-sm font-semibold text-foreground">湯泡美 正規施工店</p>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kaisei_HarunoUmi, Fraunces, Klee_One } from "next/font/google";
+import { Kaisei_HarunoUmi, Kaisei_Decol, Fraunces, Klee_One } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
@@ -26,6 +26,13 @@ const kleeOne = Klee_One({
   variable: "--font-script-jp",
   subsets: ["latin"],
   weight: ["400", "600"],
+  display: "swap",
+});
+
+const kaiseiDecol = Kaisei_Decol({
+  variable: "--font-decor-jp",
+  subsets: ["latin"],
+  weight: ["500", "700"],
   display: "swap",
 });
 
@@ -62,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${kaiseiHarunoUmi.variable} ${fraunces.variable} ${kleeOne.variable} h-full antialiased`}
+      className={`${kaiseiHarunoUmi.variable} ${kaiseiDecol.variable} ${fraunces.variable} ${kleeOne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LocalBusinessJsonLd />
