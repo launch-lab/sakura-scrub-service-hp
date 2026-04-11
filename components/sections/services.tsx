@@ -46,48 +46,48 @@ export function Services() {
 
         <RevealGroup
           stagger={0.08}
-          className="mt-14 grid grid-cols-2 gap-x-5 gap-y-10 md:mt-24 md:grid-cols-3 md:gap-x-10 md:gap-y-16"
+          className="mt-16 grid grid-cols-2 gap-x-5 gap-y-14 md:mt-28 md:grid-cols-3 md:gap-x-12 md:gap-y-20 lg:gap-x-16 lg:gap-y-24"
         >
           {mainServices.map((s, i) => {
             const index = String(i + 1).padStart(2, "0");
             return (
-              <RevealItem as="article" key={s.title} className="group relative">
+              <RevealItem as="article" key={s.title} className="group">
                 <a href="#contact" className="block">
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute -top-6 left-0 z-20 font-accent text-5xl leading-none text-foreground/20 transition group-hover:text-[color:var(--color-accent-primary)] md:-top-8 md:text-6xl lg:-top-10 lg:text-7xl"
-                  >
-                    {index}
-                  </span>
-
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background ring-1 ring-border">
-                    <Image
-                      src={s.image}
-                      alt={s.title}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 33vw"
-                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
+                  <div className="relative overflow-hidden bg-background">
+                    <div className="relative aspect-[4/5]">
+                      <Image
+                        src={s.image}
+                        alt={s.title}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 33vw"
+                        className="object-cover transition duration-[900ms] ease-out group-hover:scale-[1.03]"
+                      />
+                    </div>
                   </div>
 
-                  <div className="mt-5 flex items-start justify-between gap-3 px-1">
-                    <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-[color:var(--color-accent-primary)] md:text-lg lg:text-xl">
-                      {s.title}
-                    </h3>
+                  <div className="mt-5 flex items-baseline gap-3">
                     <span
                       aria-hidden
-                      className="mt-1 h-px flex-1 translate-y-2 bg-border"
+                      className="font-accent text-xs tracking-[0.2em] text-subtle"
+                    >
+                      {index}
+                    </span>
+                    <span
+                      aria-hidden
+                      className="h-px flex-1 bg-border"
                     />
                   </div>
+                  <h3 className="mt-3 text-base font-medium leading-tight text-foreground transition group-hover:text-[color:var(--color-accent-primary)] md:text-[17px] lg:text-lg">
+                    {s.title}
+                  </h3>
                 </a>
               </RevealItem>
             );
           })}
         </RevealGroup>
 
-        <Reveal className="mt-20 md:mt-28">
-          <div className="flex items-baseline justify-between gap-4 border-b border-foreground/20 pb-4">
+        <Reveal className="mt-24 md:mt-32">
+          <div className="flex items-baseline justify-between gap-4 border-b border-foreground/20 pb-5">
             <h3 className="text-lg font-medium text-foreground md:text-xl">
               ハウスクリーニングメニュー
             </h3>
@@ -99,9 +99,9 @@ export function Services() {
             {houseCleaningMenu.map((item, i) => (
               <li
                 key={item}
-                className="flex items-baseline gap-5 border-b border-border py-5 text-foreground/85"
+                className="flex items-baseline gap-6 border-b border-border py-6 text-foreground/85 md:py-7"
               >
-                <span className="font-accent text-xs text-sky-500">
+                <span className="font-accent text-xs tracking-[0.2em] text-subtle">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="text-base md:text-[17px]">{item}</span>
