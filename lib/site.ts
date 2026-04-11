@@ -14,6 +14,15 @@ export const site = {
   address: "神奈川県相模原市中央区共和4丁目5番6号 成洋商事内2F",
   representative: "丸山 雄也",
   affiliation: "一般社団法人抗菌防カビ清掃技術研究所",
+  affiliationUrl: "https://bmc-labo.jp/",
+  // NOTE: BMC-Labo と湯泡美の監修者。著書名・肩書きは BMC-Labo と
+  // 既存の他社掲載例 (dusmel.com / everhousecleaning.com) を参考に構成。
+  supervisor: {
+    name: "古畑 勝則",
+    title: "麻布大学 名誉教授",
+    book: "『レジオネラ属菌を知る』",
+    honorific: "先生",
+  },
 } as const;
 
 // NOTE: Vercel の実行環境なら VERCEL_PROJECT_PRODUCTION_URL / VERCEL_URL を優先し、

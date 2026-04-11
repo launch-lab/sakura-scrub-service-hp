@@ -1,6 +1,7 @@
-import { Award, FlaskConical, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Award, FlaskConical, ShieldCheck } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
+import { site } from "@/lib/site";
 
 const patents = [
   {
@@ -138,6 +139,55 @@ export function Strengths() {
                 </p>
               </div>
             ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.2} className="mt-20 md:mt-24">
+          <div className="grid gap-10 border-t border-white/10 pt-12 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:pt-16">
+            <div>
+              <p className="font-accent text-xs uppercase tracking-[0.2em] text-sakura-300">
+                supervisor
+              </p>
+              <p className="mt-4 text-sm font-medium text-white/70">
+                {site.supervisor.title}
+              </p>
+              <p
+                className="mt-2 font-medium leading-[1.05] text-white"
+                style={{ fontSize: "clamp(2rem, 4.2vw, 3rem)" }}
+              >
+                {site.supervisor.name}
+                <span className="ml-2 text-base font-normal text-white/60 md:text-lg">
+                  {site.supervisor.honorific}
+                </span>
+              </p>
+              <p className="mt-3 font-accent text-sm text-white/50 md:text-base">
+                著書 {site.supervisor.book}
+              </p>
+            </div>
+            <div className="flex flex-col justify-center">
+              <p className="text-sm leading-[1.95] text-white/70 md:text-[15px]">
+                弊社が加盟する『{site.affiliation}』(BMC 社) は、
+                『レジオネラ属菌を知る』の著書で知られる麻布大学名誉教授
+                {site.supervisor.name}
+                {site.supervisor.honorific}
+                を顧問に迎え、湯泡美の改良とレジオネラ属菌対策の普及活動を
+                監修しています。同研究所の研修修了者のみが使用を許された
+                特許洗浄剤を用いて、ご家庭から企業様施設までの衛生環境を
+                お守りします。
+              </p>
+              <a
+                href={site.affiliationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-6 inline-flex items-center gap-2 self-start font-accent text-sm text-sakura-300 transition hover:text-sakura-200"
+              >
+                {site.affiliation} 公式サイト
+                <ArrowUpRight
+                  className="h-4 w-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  aria-hidden
+                />
+              </a>
+            </div>
           </div>
         </Reveal>
       </div>
