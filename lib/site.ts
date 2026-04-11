@@ -16,6 +16,19 @@ export const site = {
   affiliation: "一般社団法人抗菌防カビ清掃技術研究所",
 } as const;
 
+// NOTE: Vercel の実行環境なら VERCEL_PROJECT_PRODUCTION_URL / VERCEL_URL を優先し、
+// ローカルや未定義時は site.url のプレースホルダを使う。
+// metadataBase / sitemap / robots / JSON-LD の正準 URL として利用
+export function getSiteUrl() {
+  const prodUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (prodUrl) return `https://${prodUrl}`;
+
+  const deployUrl = process.env.VERCEL_URL;
+  if (deployUrl) return `https://${deployUrl}`;
+
+  return site.url;
+}
+
 export const nav = [
   { href: "#services", label: "サービス" },
   { href: "#strengths", label: "強み" },

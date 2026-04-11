@@ -1,6 +1,7 @@
-import { site } from "@/lib/site";
+import { getSiteUrl, site } from "@/lib/site";
 
 export function LocalBusinessJsonLd() {
+  const siteUrl = getSiteUrl();
   const data = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -8,10 +9,10 @@ export function LocalBusinessJsonLd() {
     legalName: site.legalName,
     alternateName: site.nameEn,
     description: site.description,
-    url: site.url,
+    url: siteUrl,
     telephone: site.phone,
     email: site.email,
-    image: `${site.url}/images/brand/logo.png`,
+    image: `${siteUrl}/images/brand/logo.png`,
     address: {
       "@type": "PostalAddress",
       addressCountry: "JP",

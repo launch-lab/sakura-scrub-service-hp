@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { FloatingCTA } from "@/components/layout/floating-cta";
 import { SakuraPetals } from "@/components/effects/sakura-petals";
 import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
-import { site } from "@/lib/site";
+import { getSiteUrl, site } from "@/lib/site";
 
 const kaiseiHarunoUmi = Kaisei_HarunoUmi({
   variable: "--font-body-jp",
@@ -37,8 +37,10 @@ const kaiseiDecol = Kaisei_Decol({
   display: "swap",
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: `${site.name} | ${site.tagline}`,
     template: `%s | ${site.name}`,
@@ -47,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
-    url: site.url,
+    url: siteUrl,
     siteName: site.name,
     locale: "ja_JP",
     type: "website",
