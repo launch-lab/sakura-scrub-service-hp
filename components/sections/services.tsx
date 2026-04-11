@@ -87,13 +87,10 @@ export function Services() {
         </RevealGroup>
 
         <Reveal className="mt-24 md:mt-32">
-          <div className="flex items-baseline justify-between gap-4 border-b border-foreground/20 pb-5">
+          <div className="flex items-baseline border-b border-foreground/20 pb-5">
             <h3 className="text-lg font-medium text-foreground md:text-xl">
               ハウスクリーニングメニュー
             </h3>
-            <span className="font-accent text-sm text-sky-500">
-              house cleaning
-            </span>
           </div>
           <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {houseCleaningMenu.map((item, i) => (
