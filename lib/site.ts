@@ -14,8 +14,6 @@ export const site = {
   address: "神奈川県相模原市中央区共和4丁目5番6号 成洋商事内2F",
   representative: "丸山 雄也",
   affiliation: "一般社団法人抗菌防カビ清掃技術研究所",
-  hours: "9:00 - 18:00（不定休）",
-  areas: ["対応エリア調整中"],
 } as const;
 
 export const nav = [

@@ -4,38 +4,43 @@ import { SakuraMark } from "@/components/brand/sakura-mark";
 import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/site";
 
-const channels = [
+type Channel = {
+  icon: React.ComponentType<{ className?: string }>;
+  label: string;
+  heading: string;
+  href: string | null;
+  note?: string;
+  accent: "sky" | "sakura";
+};
+
+const channels: Channel[] = [
   {
     icon: Phone,
     label: "phone",
     heading: site.phone,
     href: `tel:${site.phone.replace(/-/g, "")}`,
-    note: site.hours,
-    accent: "sky" as const,
+    accent: "sky",
   },
   {
     icon: Mail,
     label: "email",
     heading: site.email,
     href: `mailto:${site.email}`,
-    note: "24 時間受付",
-    accent: "sakura" as const,
+    accent: "sakura",
   },
   {
     icon: MessageCircle,
     label: "line / booking",
     heading: "近日公開",
     href: null,
-    note: "LINE 予約準備中",
-    accent: "sakura" as const,
+    accent: "sakura",
   },
   {
     icon: MapPin,
     label: "area",
     heading: "対応エリア調整中",
     href: null,
-    note: "まずはご相談ください",
-    accent: "sky" as const,
+    accent: "sky",
   },
 ];
 
@@ -91,7 +96,9 @@ export function Contact() {
                       </div>
                     </div>
                     <p className="mt-4 text-base font-medium text-white">{c.heading}</p>
-                    <p className="mt-1 text-xs text-white/50">{c.note}</p>
+                    {c.note && (
+                      <p className="mt-1 text-xs text-white/50">{c.note}</p>
+                    )}
                   </>
                 );
 

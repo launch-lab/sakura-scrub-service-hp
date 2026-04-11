@@ -60,7 +60,6 @@ export function Footer() {
               </span>
             </li>
           </ul>
-          <p className="mt-4 text-xs text-muted/80">受付時間: {site.hours}</p>
         </div>
       </div>
 
