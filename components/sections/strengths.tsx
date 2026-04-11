@@ -1,5 +1,6 @@
 import { Award, FlaskConical, ShieldCheck } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 
 const patents = [
   {
@@ -52,7 +53,7 @@ export function Strengths() {
       <div className="relative mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal>
           <p className="flex items-center gap-2 font-accent text-base text-white/50">
-            <span className="h-1 w-1 rounded-full bg-sakura-400" />
+            <SakuraMark className="h-3 w-3 text-sakura-400" />
             our strengths
           </p>
           <h2 className="mt-6 max-w-4xl text-[40px] font-medium leading-[1.05] tracking-display text-white md:text-[72px] lg:text-[96px]">

@@ -1,5 +1,6 @@
 import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Reveal } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/site";
 
@@ -55,7 +56,7 @@ export function Contact() {
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <Reveal className="text-white">
             <p className="flex items-center gap-2 font-accent text-base text-white/60">
-              <span className="h-1 w-1 rounded-full bg-sakura-400" />
+              <SakuraMark className="h-3 w-3 text-sakura-400" />
               contact
             </p>
             <h2 className="mt-6 text-4xl font-medium leading-[1.05] tracking-display md:text-6xl lg:text-[76px]">

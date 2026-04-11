@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 import { site } from "@/lib/site";
 
 export function About() {
@@ -7,7 +8,7 @@ export function About() {
       <div className="mx-auto max-w-4xl px-5 lg:px-8">
         <Reveal className="text-center">
           <p className="flex items-center justify-center gap-2 font-accent text-base text-muted">
-            <span className="h-1 w-1 rounded-full bg-sakura-500" />
+            <SakuraMark className="h-3 w-3 text-sakura-500" />
             message
           </p>
           <h2 className="mt-6 text-[40px] font-medium leading-[1.1] tracking-display text-foreground md:text-[64px] lg:text-[80px]">

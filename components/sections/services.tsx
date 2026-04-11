@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 
 const mainServices = [
   { title: "家庭用エアコンクリーニング", image: "/images/works/home-aircon.jpg" },
@@ -24,10 +25,10 @@ export function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
-        <Reveal className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-end md:gap-12">
-          <div className="max-w-3xl">
+        <Reveal className="flex flex-col items-start gap-8 md:flex-row md:items-end md:gap-16">
+          <div className="shrink-0">
             <p className="flex items-center gap-2 font-accent text-base text-muted">
-              <span className="h-1 w-1 rounded-full bg-sakura-500" />
+              <SakuraMark className="h-3 w-3 text-sakura-500" />
               services
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[56px] lg:text-[72px]">
@@ -38,7 +39,7 @@ export function Services() {
               一覧
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-[1.95] text-muted md:max-w-md md:text-[15px]">
+          <p className="w-full text-sm leading-[1.95] text-muted md:flex-1 md:pb-4 md:text-[15px]">
             企業様・管理会社様への店舗、事務所、社員寮、社用車等のスポット・定期清掃、
             賃貸物件の退去後の清掃も承っております。
           </p>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Reveal } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 
 const works = [
   {
@@ -79,7 +80,7 @@ export function Works() {
         <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="flex items-center gap-2 font-accent text-base text-muted">
-              <span className="h-1 w-1 rounded-full bg-sakura-500" />
+              <SakuraMark className="h-3 w-3 text-sakura-500" />
               works
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[72px] lg:text-[92px]">
