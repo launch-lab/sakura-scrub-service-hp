@@ -1,78 +1,93 @@
-import { CalendarCheck, ClipboardCheck, MessageSquare, Sparkles } from "lucide-react";
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
 
-const steps = [
+type Step = {
+  step: string;
+  title: string;
+  body: string;
+};
+
+const steps: Step[] = [
   {
-    icon: MessageSquare,
     step: "01",
     title: "お問い合わせ",
-    body: "お電話・フォーム・LINE からお気軽にご相談ください。ヒアリングのうえ、最適なプランをご提案します。",
+    body: "まずはお問い合わせフォームまたはお電話からご連絡ください。",
   },
   {
-    icon: ClipboardCheck,
     step: "02",
-    title: "お見積もり",
-    body: "現地確認または写真から無料でお見積もりを作成。内容にご納得いただいてからの契約となります。",
+    title: "ヒアリング・ご提案",
+    body: "清掃箇所をヒアリングし、最適な施工プランをご提案します。",
   },
   {
-    icon: CalendarCheck,
     step: "03",
-    title: "ご予約・日程調整",
-    body: "ご都合の良い日時で施工日を確定。法人様の定期契約にも柔軟に対応いたします。",
+    title: "お見積り",
+    body: "ご提案した施工プランに基づいてお見積りを作成します。",
   },
   {
-    icon: Sparkles,
     step: "04",
-    title: "施工・アフターケア",
-    body: "有資格者が特許技術で丁寧に施工。施工後の防カビコーティングや定期清掃もご相談ください。",
+    title: "施工",
+    body: "熟練スタッフが丁寧に施工します。",
   },
 ];
 
 export function Flow() {
   return (
-    <section id="flow" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-5 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
-            Flow
-          </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            ご利用の流れ
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted">
+    <section id="flow" className="relative py-28 md:py-36">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+        <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="flex items-center gap-2 font-accent text-base text-muted">
+              <SakuraMark className="h-3 w-3 text-sakura-500" />
+              flow
+            </p>
+            <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+              施工までの
+              <span className="font-accent font-normal text-sakura-500">
+                ながれ
+              </span>
+            </h2>
+          </div>
+          <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
             ご相談から施工完了まで、ていねいにサポートいたします。
           </p>
-        </div>
+        </Reveal>
 
-        <ol className="relative mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <li
-                key={s.step}
-                className="relative rounded-3xl border border-border bg-surface p-7 shadow-[var(--shadow-card)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]"
+        <RevealGroup
+          as="ol"
+          stagger={0.1}
+          className="mt-20 grid grid-cols-1 border-t border-foreground/15 md:mt-28 md:grid-cols-2 lg:grid-cols-4"
+        >
+          {steps.map((s, i) => (
+            <RevealItem
+              as="li"
+              key={s.step}
+              className="relative flex flex-col border-b border-foreground/15 px-0 pb-12 pt-10 md:border-r md:px-10 md:py-14 md:last:border-r-0 lg:px-12 lg:py-16 [&:nth-child(2)]:md:border-r-0 [&:nth-child(2)]:lg:border-r"
+            >
+              <span
+                className="font-accent font-normal leading-none text-foreground/15"
+                style={{ fontSize: "clamp(4rem, 7vw, 7.5rem)" }}
+                aria-hidden
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-display text-4xl font-bold text-sakura-100">
-                    {s.step}
-                  </span>
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sakura-500 text-white shadow-[var(--shadow-card)]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold text-foreground">
-                  {s.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">{s.body}</p>
-                {i < steps.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute -right-3 top-1/2 hidden h-px w-6 -translate-y-1/2 bg-gradient-to-r from-sakura-300 to-transparent lg:block"
-                  />
-                )}
-              </li>
-            );
-          })}
-        </ol>
+                {s.step}
+              </span>
+              <p className="mt-1 font-accent text-xs uppercase tracking-[0.2em] text-sakura-500">
+                Step {s.step}
+              </p>
+              <h3 className="mt-4 text-xl font-medium leading-tight text-foreground md:text-2xl">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-sm leading-[1.9] text-muted md:text-[13px]">
+                {s.body}
+              </p>
+              {i < steps.length - 1 && (
+                <span
+                  aria-hidden
+                  className="absolute right-0 top-1/2 hidden h-[1px] w-6 -translate-y-1/2 translate-x-3 bg-foreground/20 lg:block"
+                />
+              )}
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </div>
     </section>
   );

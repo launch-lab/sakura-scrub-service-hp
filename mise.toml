@@ -1,2 +1,5 @@
+# NOTE: Node 22 は Next.js 16 の公式推奨 LTS。Turbopack のパフォーマンス改善が
+# 22 系で特に効きやすく、手元と Vercel のビルドで同じ挙動を再現するため採用。
+# package.json の engines.node も 22.x に合わせている。
 [tools]
 node = "22"

@@ -1,36 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #fdfbfa;
-  --color-foreground: #1a1624;
-  --color-muted: #6b6577;
-  --color-surface: #ffffff;
-  --color-border: #ece7ee;
+  --color-background: #ece9e2;
+  --color-surface-warm: #e4e1da;
+  --color-foreground: #2a2a2e;
+  --color-muted: #6e6c72;
+  --color-subtle: #9b989e;
+  --color-surface: #edeae3;
+  --color-surface-cool: #e6e3db;
+  --color-border: #d6d3cc;
+  --color-ink: #2b2b2f;
+  --color-cta: #4d4d52;
 
-  --color-sakura-50: #fff2f8;
-  --color-sakura-100: #ffe0ee;
-  --color-sakura-200: #ffbadb;
-  --color-sakura-300: #ff85bd;
-  --color-sakura-400: #ff4a9c;
-  --color-sakura-500: #ec1683;
-  --color-sakura-600: #d1006c;
-  --color-sakura-700: #a8005a;
-  --color-sakura-800: #7a0041;
-  --color-sakura-900: #50002b;
+  /* NOTE: セマンティックアクセント。
+     accent-primary は CTA や見出しのハイライト、ドットマークなど "主役色"。
+     accent-soft は hairline や装飾番号など補助的な位置付け。
+     無差別な sakura-500 の撒き散らしを避けるためのトークンで、
+     grep 時に利用量を監査しやすい。 */
+  --color-accent-primary: #e5006a;
+  --color-accent-soft: rgba(229, 0, 106, 0.22);
 
-  --color-aqua-50: #ecfbff;
-  --color-aqua-100: #d2f4ff;
-  --color-aqua-200: #a4e8fc;
-  --color-aqua-300: #6bd7f5;
-  --color-aqua-400: #2cbde6;
-  --color-aqua-500: #0aa3d1;
-  --color-aqua-600: #0081ab;
-  --color-aqua-700: #006788;
-  --color-aqua-800: #00506b;
-  --color-aqua-900: #003b50;
+  /* NOTE: ロゴの桜花びらから抽出した正確なマゼンタ (#e5006a) を 500 として 10 段階 */
+  --color-sakura-50: #fdf4f9;
+  --color-sakura-100: #fbe0ed;
+  --color-sakura-200: #f7b2d2;
+  --color-sakura-300: #f17ab1;
+  --color-sakura-400: #ea388a;
+  --color-sakura-500: #e5006a;
+  --color-sakura-600: #c2005a;
+  --color-sakura-700: #9b0048;
+  --color-sakura-800: #720035;
+  --color-sakura-900: #490021;
 
-  --font-sans: var(--font-noto-sans-jp), "Hiragino Sans", "Yu Gothic", sans-serif;
-  --font-display: var(--font-shippori-mincho), "Yu Mincho", "Hiragino Mincho ProN", serif;
+  /* NOTE: ロゴの外周シアン (#0080cc) をセカンダリーとして 500 に設定 */
+  --color-sky-50: #f4f9fc;
+  --color-sky-100: #e0eff8;
+  --color-sky-200: #b2d8ef;
+  --color-sky-300: #7abce4;
+  --color-sky-400: #389bd7;
+  --color-sky-500: #0080cc;
+  --color-sky-600: #006cad;
+  --color-sky-700: #00578a;
+  --color-sky-800: #004066;
+  --color-sky-900: #002841;
+
+  --font-sans: var(--font-body-jp), "Yu Mincho", "Hiragino Mincho ProN", serif;
+  --font-display: var(--font-display-en), var(--font-body-jp), "Yu Mincho", serif;
+  --font-script: var(--font-script-jp), var(--font-body-jp), serif;
 
   --shadow-soft: 0 10px 40px -10px rgba(26, 22, 36, 0.12);
   --shadow-card: 0 4px 20px -4px rgba(26, 22, 36, 0.08);
@@ -42,11 +58,37 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* NOTE: 固定ヘッダー (約 80px) の下に見出しが隠れないよう、id 付きセクションの
+     スクロールアンカー位置を下げる */
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
   body {
-    background: var(--color-background);
+    background:
+      radial-gradient(ellipse 90% 70% at 0% 0%, #ffc4dc 0%, rgba(255, 196, 220, 0.55) 35%, transparent 65%),
+      radial-gradient(ellipse 85% 70% at 100% 20%, #ffd9a8 0%, rgba(255, 217, 168, 0.5) 35%, transparent 65%),
+      radial-gradient(ellipse 90% 80% at 10% 80%, #c9d4f0 0%, rgba(201, 212, 240, 0.5) 35%, transparent 65%),
+      radial-gradient(ellipse 90% 70% at 100% 100%, #ffc7df 0%, rgba(255, 199, 223, 0.5) 35%, transparent 65%),
+      linear-gradient(180deg, #f9f1e5 0%, #f2e8d9 50%, #ebe0ce 100%);
+    background-attachment: fixed;
     color: var(--color-foreground);
     font-family: var(--font-sans);
     font-feature-settings: "palt" 1;
+    font-weight: 400;
+    position: relative;
+  }
+
+  /* NOTE: 画面全体に薄いフィルムグレインを敷いて紙のような質感を出す */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.22;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
   ::selection {
@@ -55,7 +97,30 @@
   }
 
   h1, h2, h3, h4 {
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .tracking-display {
+    letter-spacing: -0.035em;
+  }
+
+  .tracking-display-tight {
+    letter-spacing: -0.05em;
+  }
+
+  .font-numeric {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  .leading-display {
+    line-height: 0.95;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    color: transparent;
   }
 }
 
@@ -70,15 +135,41 @@
 
   .bg-grid {
     background-image:
-      linear-gradient(to right, rgba(10, 163, 209, 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(10, 163, 209, 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(15, 13, 20, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(15, 13, 20, 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
 
   .bg-sakura-gradient {
-    background: radial-gradient(ellipse at top left, #ffe0ee 0%, transparent 55%),
-      radial-gradient(ellipse at bottom right, #d2f4ff 0%, transparent 55%),
-      #fdfbfa;
+    background: radial-gradient(ellipse at 15% 5%, rgba(255, 224, 238, 0.7) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 95%, rgba(15, 13, 20, 0.06) 0%, transparent 55%),
+      var(--color-background);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .font-decor {
+    font-family: var(--font-decor-jp), var(--font-body-jp), serif;
+  }
+
+  .font-accent {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hairline {
+    background: linear-gradient(to right, transparent, var(--color-border), transparent);
   }
 
   .mask-fade-b {
@@ -98,6 +189,34 @@
   50%  { transform: translate(calc(var(--drift, 20px) * -0.4), 55vh) rotate(220deg); }
   75%  { transform: translate(calc(var(--drift, 20px) * 0.8), 80vh) rotate(310deg); }
   100% { transform: translate(var(--drift, 20px), 110vh) rotate(420deg); }
+}
+
+/* NOTE: Works セクションの横マーキー用。原本 + 複製の合計幅を -50% 移動して無限ループ */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-x 80s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* NOTE: OS のモーション削減設定を尊重。
+   花びら落下 / マーキー / Hero のフロート系を全て停止する */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .animate-float {

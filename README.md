@@ -11,6 +11,8 @@
 - **アイコン**: Lucide React
 - **フォント**: Noto Sans JP / Shippori Mincho (via `next/font/google`)
 - **Node バージョン管理**: mise (`mise.toml` で Node 22 を固定)
+  - Node 22 は Next.js 16 の推奨 LTS。手元と Vercel で同じ挙動にするため
+    `package.json` の `engines.node` も `22.x` に合わせています
 
 ### 将来の拡張予定
 
@@ -94,3 +96,33 @@ Tailwind v4 の `@theme` ブロックで定義しているため、`bg-sakura-50
 
 `lib/site.ts` 内の電話番号・メール・住所などは仮値です。
 最終的には **microCMS** から取得するよう差し替え予定です。
+
+## 環境変数
+
+`.env.local` に設定（未設定でもビルド・動作可能）。
+
+```sh
+# お問い合わせフォームのメール送信 (Resend)
+# NOTE: 未設定時は server action が console.info でフォールバック
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxx
+
+# 送信先メールアドレス (デフォルト: lib/site.ts の email)
+CONTACT_TO_EMAIL=info@example.com
+
+# 送信元メールアドレス
+# NOTE: 独自ドメインを Resend に登録していない場合は onboarding@resend.dev
+CONTACT_FROM_EMAIL=onboarding@resend.dev
+```
+
+### Vercel 実行時の URL 解決
+
+`lib/site.ts` の `getSiteUrl()` が以下の優先順位で正準 URL を返し、
+`metadataBase` / `sitemap.xml` / `robots.txt` / LocalBusiness JSON-LD で利用されます:
+
+1. `VERCEL_PROJECT_PRODUCTION_URL`（Vercel Production 時に自動注入）
+2. `VERCEL_URL`（Preview デプロイの都度の URL）
+3. `site.url` （ローカルや未定義時のフォールバック）
+
+独自ドメインを運用する場合は、Vercel の Environment Variables で
+`VERCEL_PROJECT_PRODUCTION_URL` と同等のカスタム値を設定するか、
+`site.url` を正式ドメインに書き換えてください。

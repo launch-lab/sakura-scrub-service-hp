@@ -1,7 +1,10 @@
+import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
+import { SakuraMark } from "@/components/brand/sakura-mark";
+
 const faqs = [
   {
     q: "見積もりは無料ですか？",
-    a: "はい、お見積もりは無料です。お電話またはフォームよりお気軽にご相談ください。現地確認が必要な場合も、出張費は発生しません（対応エリア内）。",
+    a: "はい、お見積もりは無料です。お電話またはフォームよりお気軽にご相談ください。現地確認が必要な場合も、出張費は発生しません(対応エリア内)。",
   },
   {
     q: "対応エリアはどこまでですか？",
@@ -13,10 +16,10 @@ const faqs = [
   },
   {
     q: "他社と何が違うのですか？",
-    a: "国土交通省・経済産業省に認定された 2 つの特許技術（高耐久型防カビ工法、湯泡美）を使用し、汚れの除去だけでなくカビ・レジオネラの再発抑制まで行う点が最大の特長です。",
+    a: "国土交通省・経済産業省に認定された 2 つの特許技術(高耐久型防カビ工法、湯泡美)を使用し、汚れの除去だけでなくカビ・レジオネラの再発抑制まで行う点が最大の特長です。",
   },
   {
-    q: "法人契約（定期清掃）にも対応していますか？",
+    q: "法人契約(定期清掃)にも対応していますか？",
     a: "はい、店舗・事務所・施設・社員寮・社用車等の定期清掃やスポット清掃に対応しております。ご要望に合わせたプランをご提案いたします。",
   },
   {
@@ -27,41 +30,78 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section id="faq" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-4xl px-5 lg:px-8">
-        <div className="text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-aqua-600">
-            FAQ
+    <section id="faq" className="relative py-24 md:py-36">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+        <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="flex items-center gap-2 font-accent text-base text-muted">
+              <SakuraMark className="h-3 w-3 text-sakura-500" />
+              question
+            </p>
+            <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+              <span className="font-accent font-normal text-sakura-500">
+                よくある
+              </span>
+              ご質問
+            </h2>
+          </div>
+          <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
+            お客さまからよくいただくご質問をまとめました。
           </p>
-          <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            よくある質問
-          </h2>
-        </div>
+        </Reveal>
 
-        <div className="mt-14 divide-y divide-border rounded-3xl border border-border bg-surface shadow-[var(--shadow-card)]">
-          {faqs.map((f) => (
-            <details
-              key={f.q}
-              className="group px-6 py-5 md:px-8 md:py-6 [&_summary::-webkit-details-marker]:hidden"
-            >
-              <summary className="flex cursor-pointer items-start justify-between gap-4">
-                <span className="flex items-start gap-3 font-display text-base font-semibold text-foreground md:text-lg">
-                  <span className="font-display text-base font-bold text-sakura-500">Q.</span>
-                  {f.q}
-                </span>
-                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-border transition group-open:rotate-45 group-open:border-sakura-400 group-open:text-sakura-600">
-                  <svg viewBox="0 0 12 12" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <path d="M6 1v10M1 6h10" />
-                  </svg>
-                </span>
-              </summary>
-              <div className="mt-4 flex gap-3 text-sm leading-relaxed text-muted md:text-[15px]">
-                <span className="font-display text-base font-bold text-aqua-600">A.</span>
-                <p>{f.a}</p>
-              </div>
-            </details>
-          ))}
-        </div>
+        <Reveal delay={0.1}>
+          <RevealGroup
+            as="ol"
+            stagger={0.06}
+            className="mt-16 border-t border-foreground/15 md:mt-24"
+          >
+            {faqs.map((f, i) => {
+              const number = String(i + 1).padStart(2, "0");
+              return (
+                <RevealItem
+                  as="li"
+                  key={f.q}
+                  className="border-b border-border"
+                >
+                  <details className="group [&_summary::-webkit-details-marker]:hidden">
+                    <summary className="relative flex cursor-pointer list-none items-baseline gap-6 py-7 pr-10 md:gap-8 md:py-9">
+                      <span
+                        aria-hidden
+                        className="font-accent text-xs tracking-[0.2em] text-subtle md:text-sm"
+                      >
+                        {number}
+                      </span>
+                      <h3 className="flex-1 text-base font-medium leading-[1.6] text-foreground md:text-lg lg:text-xl">
+                        {f.q}
+                      </h3>
+                      <span
+                        aria-hidden
+                        className="absolute right-0 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center text-foreground/60 transition group-open:rotate-45 group-open:text-sakura-500 md:h-6 md:w-6"
+                      >
+                        <svg
+                          viewBox="0 0 12 12"
+                          className="h-full w-full"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1.25"
+                          strokeLinecap="round"
+                        >
+                          <path d="M6 1v10M1 6h10" />
+                        </svg>
+                      </span>
+                    </summary>
+                    <div className="pb-8 pl-[calc(0.75rem+1.5em)] pr-10 md:pb-10 md:pl-[calc(1rem+1.75em)]">
+                      <p className="max-w-2xl text-sm leading-[1.95] text-muted md:text-[15px]">
+                        {f.a}
+                      </p>
+                    </div>
+                  </details>
+                </RevealItem>
+              );
+            })}
+          </RevealGroup>
+        </Reveal>
       </div>
     </section>
   );

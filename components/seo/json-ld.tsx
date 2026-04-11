@@ -1,19 +1,24 @@
-import { site } from "@/lib/site";
+import { getSiteUrl, site } from "@/lib/site";
 
 export function LocalBusinessJsonLd() {
+  const siteUrl = getSiteUrl();
   const data = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: site.name,
+    legalName: site.legalName,
     alternateName: site.nameEn,
     description: site.description,
-    url: site.url,
+    url: siteUrl,
     telephone: site.phone,
     email: site.email,
-    image: `${site.url}/images/brand/logo.png`,
+    image: `${siteUrl}/images/brand/logo.png`,
     address: {
       "@type": "PostalAddress",
       addressCountry: "JP",
+      postalCode: site.postalCode,
+      addressRegion: "神奈川県",
+      addressLocality: "相模原市中央区",
       streetAddress: site.address,
     },
     areaServed: "JP",
