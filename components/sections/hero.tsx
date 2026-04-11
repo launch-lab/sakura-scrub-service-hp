@@ -64,20 +64,6 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-xl grid-cols-2 gap-6 border-t border-border pt-10">
-            <div>
-              <dt className="text-xs tracking-wide text-subtle">特許</dt>
-              <dd className="mt-3 font-accent text-5xl font-normal leading-none text-foreground md:text-6xl">
-                2<span className="ml-1 align-top text-sm text-muted">件</span>
-              </dd>
-            </div>
-            <div>
-              <dt className="text-xs tracking-wide text-subtle">対応</dt>
-              <dd className="mt-3 text-3xl font-medium leading-none text-foreground md:text-4xl">
-                個人 / 法人
-              </dd>
-            </div>
-          </dl>
         </motion.div>
 
         <motion.div

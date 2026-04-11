@@ -36,7 +36,6 @@ export function Services() {
               <span className="font-accent font-normal text-sakura-500">
                 メニュー
               </span>
-              一覧
             </h2>
           </div>
           <p className="w-full text-sm leading-[1.95] text-muted md:flex-1 md:pb-4 md:text-[15px]">
