@@ -1,4 +1,4 @@
-import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { CalendarCheck, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -29,10 +29,11 @@ const channels: Channel[] = [
     accent: "sakura",
   },
   {
-    icon: MessageCircle,
-    label: "line / booking",
-    heading: "近日公開",
+    icon: CalendarCheck,
+    label: "booking",
+    heading: "オンライン予約",
     href: null,
+    note: "カレンダー予約を準備中",
     accent: "sakura",
   },
   {
