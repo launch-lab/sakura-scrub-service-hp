@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useId } from "react";
 import { useFormStatus } from "react-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { submitContact, type ContactState } from "@/app/actions/contact";
@@ -20,12 +20,17 @@ const categories = [
 
 export function ContactForm() {
   const [state, formAction] = useActionState(submitContact, initialState);
+  const formId = useId();
 
   if (state.ok) {
     return (
-      <div className="flex flex-col items-start gap-5 rounded-2xl border border-white/15 bg-white/[0.03] p-8 text-white md:p-10">
+      <div
+        role="status"
+        aria-live="polite"
+        className="flex flex-col items-start gap-5 rounded-2xl border border-white/15 bg-white/[0.03] p-8 text-white md:p-10"
+      >
         <div className="flex h-12 w-12 items-center justify-center rounded-full border border-sakura-300/40 bg-sakura-500/10 text-sakura-300">
-          <CheckCircle2 className="h-6 w-6" />
+          <CheckCircle2 className="h-6 w-6" aria-hidden />
         </div>
         <div>
           <p className="font-accent text-sm text-sakura-300">thank you</p>
@@ -43,9 +48,10 @@ export function ContactForm() {
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5">
+    <form action={formAction} noValidate className="flex flex-col gap-5">
       <div className="grid gap-5 md:grid-cols-2">
         <Field
+          idPrefix={formId}
           name="name"
           label="お名前"
           required
@@ -53,6 +59,7 @@ export function ContactForm() {
           error={state.errors?.name}
         />
         <Field
+          idPrefix={formId}
           name="email"
           type="email"
           label="メールアドレス"
@@ -61,6 +68,7 @@ export function ContactForm() {
           error={state.errors?.email}
         />
         <Field
+          idPrefix={formId}
           name="phone"
           type="tel"
           label="電話番号"
@@ -69,6 +77,7 @@ export function ContactForm() {
           error={state.errors?.phone}
         />
         <SelectField
+          idPrefix={formId}
           name="category"
           label="ご希望メニュー"
           required
@@ -79,6 +88,7 @@ export function ContactForm() {
       </div>
 
       <TextareaField
+        idPrefix={formId}
         name="message"
         label="お問い合わせ内容"
         required
@@ -87,7 +97,9 @@ export function ContactForm() {
       />
 
       {state.message && !state.ok && (
-        <p className="text-sm text-sakura-300">{state.message}</p>
+        <p role="alert" aria-live="assertive" className="text-sm text-sakura-300">
+          {state.message}
+        </p>
       )}
 
       <div className="mt-2 flex items-center justify-between gap-4">
@@ -106,15 +118,17 @@ function SubmitButton() {
     <button
       type="submit"
       disabled={pending}
+      aria-busy={pending}
       className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-ink shadow-lg transition hover:bg-sakura-100 disabled:cursor-not-allowed disabled:opacity-60"
     >
       {pending ? "送信中…" : "送信する"}
-      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+      <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" aria-hidden />
     </button>
   );
 }
 
 type FieldProps = {
+  idPrefix: string;
   name: string;
   label: string;
   type?: string;
@@ -124,46 +138,99 @@ type FieldProps = {
   error?: string;
 };
 
-function Field({ name, label, type = "text", required, optional, defaultValue, error }: FieldProps) {
+function Field({
+  idPrefix,
+  name,
+  label,
+  type = "text",
+  required,
+  optional,
+  defaultValue,
+  error,
+}: FieldProps) {
+  const fieldId = `${idPrefix}-${name}`;
+  const errorId = `${fieldId}-error`;
   return (
-    <label className="flex flex-col gap-2">
-      <span className="flex items-center gap-2 text-xs text-white/60">
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={fieldId}
+        className="flex items-center gap-2 text-xs text-white/60"
+      >
         {label}
-        {required && <span className="text-sakura-300">*</span>}
-        {optional && <span className="font-accent text-[11px] text-white/40">optional</span>}
-      </span>
+        {required && (
+          <span className="text-sakura-300" aria-hidden>
+            *
+          </span>
+        )}
+        {optional && (
+          <span className="font-accent text-[11px] text-white/40">optional</span>
+        )}
+      </label>
       <input
+        id={fieldId}
         name={name}
         type={type}
         required={required}
         defaultValue={defaultValue}
+        aria-required={required || undefined}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         className="rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-sakura-300/60 focus:outline-none focus:ring-2 focus:ring-sakura-300/20"
       />
-      {error && <span className="text-xs text-sakura-300">{error}</span>}
-    </label>
+      {error && (
+        <span id={errorId} role="alert" className="text-xs text-sakura-300">
+          {error}
+        </span>
+      )}
+    </div>
   );
 }
 
-function TextareaField({ name, label, required, defaultValue, error }: FieldProps) {
+function TextareaField({
+  idPrefix,
+  name,
+  label,
+  required,
+  defaultValue,
+  error,
+}: FieldProps) {
+  const fieldId = `${idPrefix}-${name}`;
+  const errorId = `${fieldId}-error`;
   return (
-    <label className="flex flex-col gap-2">
-      <span className="flex items-center gap-2 text-xs text-white/60">
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={fieldId}
+        className="flex items-center gap-2 text-xs text-white/60"
+      >
         {label}
-        {required && <span className="text-sakura-300">*</span>}
-      </span>
+        {required && (
+          <span className="text-sakura-300" aria-hidden>
+            *
+          </span>
+        )}
+      </label>
       <textarea
+        id={fieldId}
         name={name}
         required={required}
         defaultValue={defaultValue}
         rows={5}
+        aria-required={required || undefined}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         className="resize-none rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white placeholder:text-white/30 focus:border-sakura-300/60 focus:outline-none focus:ring-2 focus:ring-sakura-300/20"
       />
-      {error && <span className="text-xs text-sakura-300">{error}</span>}
-    </label>
+      {error && (
+        <span id={errorId} role="alert" className="text-xs text-sakura-300">
+          {error}
+        </span>
+      )}
+    </div>
   );
 }
 
 function SelectField({
+  idPrefix,
   name,
   label,
   required,
@@ -171,16 +238,29 @@ function SelectField({
   error,
   options,
 }: FieldProps & { options: readonly string[] }) {
+  const fieldId = `${idPrefix}-${name}`;
+  const errorId = `${fieldId}-error`;
   return (
-    <label className="flex flex-col gap-2">
-      <span className="flex items-center gap-2 text-xs text-white/60">
+    <div className="flex flex-col gap-2">
+      <label
+        htmlFor={fieldId}
+        className="flex items-center gap-2 text-xs text-white/60"
+      >
         {label}
-        {required && <span className="text-sakura-300">*</span>}
-      </span>
+        {required && (
+          <span className="text-sakura-300" aria-hidden>
+            *
+          </span>
+        )}
+      </label>
       <select
+        id={fieldId}
         name={name}
         required={required}
         defaultValue={defaultValue ?? ""}
+        aria-required={required || undefined}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? errorId : undefined}
         className="rounded-lg border border-white/15 bg-white/[0.04] px-4 py-3 text-sm text-white focus:border-sakura-300/60 focus:outline-none focus:ring-2 focus:ring-sakura-300/20"
       >
         <option value="" disabled className="bg-ink">
@@ -192,7 +272,11 @@ function SelectField({
           </option>
         ))}
       </select>
-      {error && <span className="text-xs text-sakura-300">{error}</span>}
-    </label>
+      {error && (
+        <span id={errorId} role="alert" className="text-xs text-sakura-300">
+          {error}
+        </span>
+      )}
+    </div>
   );
 }
