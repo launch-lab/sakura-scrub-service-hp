@@ -35,7 +35,7 @@ export function Faq() {
         <Reveal className="text-center">
           <p className="flex items-center justify-center gap-2 font-accent text-base text-muted">
             <SakuraMark className="h-3 w-3 text-sakura-500" />
-            faq
+            question
           </p>
           <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
             <span className="font-accent font-normal text-sakura-500">よくある</span>
