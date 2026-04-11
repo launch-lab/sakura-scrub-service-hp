@@ -32,7 +32,7 @@ export function Services() {
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[56px] lg:text-[72px]">
               施工
-              <span className="font-accent font-normal text-sakura-600">
+              <span className="font-accent font-normal text-sakura-500">
                 メニュー
               </span>
               一覧
@@ -85,7 +85,7 @@ export function Services() {
                   </div>
 
                   <div className="mt-5 flex items-start justify-between gap-3 px-1">
-                    <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-sakura-600 md:text-lg lg:text-xl">
+                    <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-sakura-500 md:text-lg lg:text-xl">
                       {s.title}
                     </h3>
                     <span

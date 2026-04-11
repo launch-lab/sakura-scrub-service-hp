@@ -12,7 +12,7 @@ export function About() {
           </p>
           <h2 className="mt-6 text-[40px] font-medium leading-[1.1] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
             ご
-            <span className="font-accent font-normal text-sakura-600">あいさつ</span>
+            <span className="font-accent font-normal text-sakura-500">あいさつ</span>
           </h2>
         </Reveal>
 

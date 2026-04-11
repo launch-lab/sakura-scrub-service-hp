@@ -12,28 +12,29 @@
   --color-ink: #2b2b2f;
   --color-cta: #4d4d52;
 
-  --color-sakura-50: #fff2f8;
-  --color-sakura-100: #ffe0ee;
-  --color-sakura-200: #ffbadb;
-  --color-sakura-300: #ff85bd;
-  --color-sakura-400: #ff4a9c;
-  --color-sakura-500: #ec1683;
-  --color-sakura-600: #d1006c;
-  --color-sakura-700: #a8005a;
-  --color-sakura-800: #7a0041;
-  --color-sakura-900: #50002b;
+  /* NOTE: ロゴの桜花びらから抽出した正確なマゼンタ (#e5006a) を 500 として 10 段階 */
+  --color-sakura-50: #fdf4f9;
+  --color-sakura-100: #fbe0ed;
+  --color-sakura-200: #f7b2d2;
+  --color-sakura-300: #f17ab1;
+  --color-sakura-400: #ea388a;
+  --color-sakura-500: #e5006a;
+  --color-sakura-600: #c2005a;
+  --color-sakura-700: #9b0048;
+  --color-sakura-800: #720035;
+  --color-sakura-900: #490021;
 
-  /* NOTE: ロゴのシアンをセカンダリーブランドカラーとして定義 */
-  --color-sky-50: #e8f8fc;
-  --color-sky-100: #ccf0f8;
-  --color-sky-200: #9ae1f0;
-  --color-sky-300: #5fcce3;
-  --color-sky-400: #2bb7d2;
-  --color-sky-500: #0e9cbb;
-  --color-sky-600: #067e9a;
-  --color-sky-700: #05647b;
-  --color-sky-800: #074e60;
-  --color-sky-900: #093c4a;
+  /* NOTE: ロゴの外周シアン (#0080cc) をセカンダリーとして 500 に設定 */
+  --color-sky-50: #f4f9fc;
+  --color-sky-100: #e0eff8;
+  --color-sky-200: #b2d8ef;
+  --color-sky-300: #7abce4;
+  --color-sky-400: #389bd7;
+  --color-sky-500: #0080cc;
+  --color-sky-600: #006cad;
+  --color-sky-700: #00578a;
+  --color-sky-800: #004066;
+  --color-sky-900: #002841;
 
   --font-sans: var(--font-body-jp), "Yu Mincho", "Hiragino Mincho ProN", serif;
   --font-display: var(--font-display-en), var(--font-body-jp), "Yu Mincho", serif;

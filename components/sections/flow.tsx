@@ -39,7 +39,7 @@ export function Flow() {
           </p>
           <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
             ご利用の
-            <span className="font-accent font-normal text-sakura-600">流れ</span>
+            <span className="font-accent font-normal text-sakura-500">流れ</span>
           </h2>
           <p className="mt-8 text-base font-normal leading-[1.9] text-muted md:text-[17px]">
             ご相談から施工完了まで、ていねいにサポートいたします。
@@ -63,7 +63,7 @@ export function Flow() {
                     <Icon className="h-5 w-5" />
                   </div>
                 </div>
-                <h3 className="mt-5 text-lg font-medium text-foreground transition group-hover:text-sakura-600">
+                <h3 className="mt-5 text-lg font-medium text-foreground transition group-hover:text-sakura-500">
                   {s.title}
                 </h3>
                 <p className="mt-2.5 text-sm leading-relaxed text-muted">{s.body}</p>

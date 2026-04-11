@@ -84,7 +84,7 @@ export function Works() {
             </p>
             <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[72px] lg:text-[92px]">
               施工
-              <span className="font-accent font-normal text-sakura-600">
+              <span className="font-accent font-normal text-sakura-500">
                 事例
               </span>
             </h2>

@@ -3,6 +3,7 @@ import { Kaisei_HarunoUmi, Kaisei_Decol, Fraunces, Klee_One } from "next/font/go
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { FloatingCTA } from "@/components/layout/floating-cta";
 import { SakuraPetals } from "@/components/effects/sakura-petals";
 import { LocalBusinessJsonLd } from "@/components/seo/json-ld";
 import { site } from "@/lib/site";
@@ -77,6 +78,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingCTA />
       </body>
     </html>
   );

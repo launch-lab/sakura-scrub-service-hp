@@ -37,7 +37,7 @@ export function Faq() {
             faq
           </p>
           <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
-            <span className="font-accent font-normal text-sakura-600">よくある</span>
+            <span className="font-accent font-normal text-sakura-500">よくある</span>
             ご質問
           </h2>
         </Reveal>
