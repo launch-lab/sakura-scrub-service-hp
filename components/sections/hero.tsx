@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Droplets, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { site } from "@/lib/site";
@@ -49,13 +48,13 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
+            <a
               href="#contact"
               className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-cta)] px-7 py-4 text-base font-semibold text-background shadow-[var(--shadow-soft)] transition hover:bg-foreground"
             >
               無料で見積もりを依頼
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </Link>
+            </a>
             <a
               href={`tel:${site.phone.replace(/-/g, "")}`}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface/80 px-7 py-4 text-base font-semibold text-foreground backdrop-blur transition hover:bg-surface"

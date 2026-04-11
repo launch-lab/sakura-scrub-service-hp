@@ -42,13 +42,13 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 lg:flex">
           {nav.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
               className="text-sm font-medium text-foreground/70 transition hover:text-foreground"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -60,12 +60,12 @@ export function Header() {
             <Phone className="h-4 w-4" />
             {site.phone}
           </a>
-          <Link
+          <a
             href="#contact"
             className="rounded-full bg-[var(--color-cta)] px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-foreground"
           >
             無料見積もり
-          </Link>
+          </a>
         </div>
 
         <button
@@ -84,14 +84,14 @@ export function Header() {
           <div className="mx-5 mb-4 rounded-2xl border border-border bg-surface/95 p-6 shadow-[var(--shadow-soft)] backdrop-blur-xl">
             <nav className="flex flex-col gap-1">
               {nav.map((item) => (
-                <Link
+                <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className="rounded-xl px-3 py-3 text-base font-medium text-foreground/90 transition hover:bg-foreground/5"
                 >
                   {item.label}
-                </Link>
+                </a>
               ))}
             </nav>
             <div className="mt-5 flex flex-col gap-3 border-t border-border pt-5">
@@ -102,13 +102,13 @@ export function Header() {
                 <Phone className="h-4 w-4" />
                 {site.phone}
               </a>
-              <Link
+              <a
                 href="#contact"
                 onClick={() => setOpen(false)}
                 className="rounded-full bg-[var(--color-cta)] py-3 text-center text-sm font-semibold text-background"
               >
                 無料見積もり
-              </Link>
+              </a>
             </div>
           </div>
         </div>

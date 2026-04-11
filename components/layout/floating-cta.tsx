@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight, Phone } from "lucide-react";
 import { site } from "@/lib/site";
@@ -49,13 +48,13 @@ export function FloatingCTA() {
           <Phone className="h-4 w-4" />
           <span>電話で相談</span>
         </a>
-        <Link
+        <a
           href="#contact"
           className="group flex flex-1 items-center justify-center gap-2 rounded-full bg-[var(--color-cta)] px-5 py-3 text-sm font-semibold text-background transition hover:bg-foreground md:flex-none"
         >
           無料で見積もり
           <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-        </Link>
+        </a>
       </div>
     </div>
   );

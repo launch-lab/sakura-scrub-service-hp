@@ -50,6 +50,12 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* NOTE: 固定ヘッダー (約 80px) の下に見出しが隠れないよう、id 付きセクションの
+     スクロールアンカー位置を下げる */
+  section[id] {
+    scroll-margin-top: 96px;
+  }
+
   body {
     background:
       radial-gradient(ellipse 90% 70% at 0% 0%, #ffc4dc 0%, rgba(255, 196, 220, 0.55) 35%, transparent 65%),

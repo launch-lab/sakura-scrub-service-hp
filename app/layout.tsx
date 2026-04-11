@@ -58,6 +58,11 @@ export const metadata: Metadata = {
     description: site.description,
   },
   // NOTE: app/icon.png / app/apple-icon.png / app/favicon.ico を Next.js が自動検出する
+  other: {
+    // NOTE: iOS Safari が電話番号・住所を自動でリンク化するのを抑制
+    //       (auto-linkify が原因のハイドレーションミスマッチを防ぐ)
+    "format-detection": "telephone=no, date=no, email=no, address=no",
+  },
 };
 
 export default function RootLayout({
@@ -69,6 +74,7 @@ export default function RootLayout({
     <html
       lang="ja"
       className={`${kaiseiHarunoUmi.variable} ${kaiseiDecol.variable} ${fraunces.variable} ${kleeOne.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LocalBusinessJsonLd />
