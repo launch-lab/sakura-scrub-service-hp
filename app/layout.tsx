@@ -57,9 +57,7 @@ export const metadata: Metadata = {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
   },
-  icons: {
-    icon: "/images/brand/logo.png",
-  },
+  // NOTE: app/icon.png / app/apple-icon.png / app/favicon.ico を Next.js が自動検出する
 };
 
 export default function RootLayout({
