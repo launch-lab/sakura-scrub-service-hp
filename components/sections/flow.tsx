@@ -1,15 +1,7 @@
-import {
-  ChartLineUp,
-  Handshake,
-  Headset,
-  UsersThree,
-} from "@phosphor-icons/react/dist/ssr";
-import type { Icon } from "@phosphor-icons/react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 
 type Step = {
-  icon: Icon;
   step: string;
   title: string;
   body: string;
@@ -17,25 +9,21 @@ type Step = {
 
 const steps: Step[] = [
   {
-    icon: Headset,
     step: "01",
     title: "お問い合わせ",
     body: "まずはお問い合わせフォームまたはお電話からご連絡ください。",
   },
   {
-    icon: UsersThree,
     step: "02",
     title: "ヒアリング・ご提案",
     body: "清掃箇所をヒアリングし、最適な施工プランをご提案します。",
   },
   {
-    icon: ChartLineUp,
     step: "03",
     title: "お見積り",
     body: "ご提案した施工プランに基づいてお見積りを作成します。",
   },
   {
-    icon: Handshake,
     step: "04",
     title: "施工",
     body: "熟練スタッフが丁寧に施工します。",
@@ -44,13 +32,8 @@ const steps: Step[] = [
 
 export function Flow() {
   return (
-    <section
-      id="flow"
-      className="relative overflow-hidden py-24 md:py-32"
-    >
-      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-sakura-100 to-sakura-50" />
-
-      <div className="relative mx-auto max-w-[1440px] px-5 lg:px-8">
+    <section id="flow" className="relative py-28 md:py-36">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="flex items-center gap-2 font-accent text-base text-muted">
@@ -72,38 +55,38 @@ export function Flow() {
         <RevealGroup
           as="ol"
           stagger={0.1}
-          className="mt-16 grid grid-cols-1 divide-y divide-border border-y border-border md:mt-20 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
+          className="mt-20 grid grid-cols-1 border-t border-foreground/15 md:mt-28 md:grid-cols-2 lg:grid-cols-4"
         >
-          {steps.map((s) => {
-            const Icon = s.icon;
-            return (
-              <RevealItem
-                as="li"
-                key={s.step}
-                className="group flex items-start gap-5 py-8 md:px-6 md:py-10 lg:px-8"
+          {steps.map((s, i) => (
+            <RevealItem
+              as="li"
+              key={s.step}
+              className="relative flex flex-col border-b border-foreground/15 px-0 pb-12 pt-10 md:border-r md:px-10 md:py-14 md:last:border-r-0 lg:px-12 lg:py-16 [&:nth-child(2)]:md:border-r-0 [&:nth-child(2)]:lg:border-r"
+            >
+              <span
+                className="font-accent font-normal leading-none text-foreground/15"
+                style={{ fontSize: "clamp(4rem, 7vw, 7.5rem)" }}
+                aria-hidden
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-foreground/15 bg-surface/80">
-                  <Icon
-                    size={24}
-                    weight="fill"
-                    className="text-sakura-500"
-                    aria-hidden
-                  />
-                </div>
-                <div className="flex-1">
-                  <p className="font-accent text-xs text-sakura-500">
-                    Step {s.step}
-                  </p>
-                  <h3 className="mt-2 text-lg font-medium text-foreground md:text-xl">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-[1.8] text-muted">
-                    {s.body}
-                  </p>
-                </div>
-              </RevealItem>
-            );
-          })}
+                {s.step}
+              </span>
+              <p className="mt-1 font-accent text-xs uppercase tracking-[0.2em] text-sakura-500">
+                Step {s.step}
+              </p>
+              <h3 className="mt-4 text-xl font-medium leading-tight text-foreground md:text-2xl">
+                {s.title}
+              </h3>
+              <p className="mt-4 text-sm leading-[1.9] text-muted md:text-[13px]">
+                {s.body}
+              </p>
+              {i < steps.length - 1 && (
+                <span
+                  aria-hidden
+                  className="absolute right-0 top-1/2 hidden h-[1px] w-6 -translate-y-1/2 translate-x-3 bg-foreground/20 lg:block"
+                />
+              )}
+            </RevealItem>
+          ))}
         </RevealGroup>
       </div>
     </section>

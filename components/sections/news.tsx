@@ -78,10 +78,10 @@ export function News() {
           </p>
         </Reveal>
 
-        {/* Featured article */}
+        {/* Featured article - NYT Magazine 方式: 日付を巨大 serif で独立表示 */}
         <Reveal delay={0.1} className="mt-16 md:mt-24">
           <a href={featured.href} className="group block">
-            <article className="grid gap-8 md:grid-cols-[1.5fr_1fr] md:gap-12">
+            <article className="grid gap-10 md:grid-cols-[1.5fr_1fr] md:gap-12">
               <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-background ring-1 ring-border">
                 <Image
                   src={featured.thumbnail}
@@ -99,12 +99,9 @@ export function News() {
               <div className="flex flex-col justify-between md:py-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <time
-                      dateTime={featured.publishedAt}
-                      className="font-accent text-sm text-subtle md:text-base"
-                    >
-                      {formatDate(featured.publishedAt)}
-                    </time>
+                    <span className="font-accent text-xs uppercase tracking-[0.2em] text-subtle">
+                      feature story
+                    </span>
                     <span className="h-px flex-1 bg-border" />
                     {featured.category && (
                       <span className="text-xs tracking-wide text-sky-500">
@@ -112,7 +109,14 @@ export function News() {
                       </span>
                     )}
                   </div>
-                  <h3 className="mt-5 text-2xl font-medium leading-[1.3] text-foreground transition group-hover:text-sakura-500 md:text-3xl lg:text-[34px]">
+                  <time
+                    dateTime={featured.publishedAt}
+                    className="mt-6 block font-accent font-normal leading-[0.9] text-foreground"
+                    style={{ fontSize: "clamp(2.6rem, 5.2vw, 4.5rem)" }}
+                  >
+                    {formatDate(featured.publishedAt)}
+                  </time>
+                  <h3 className="mt-6 text-2xl font-medium leading-[1.3] text-foreground transition group-hover:text-sakura-500 md:text-3xl">
                     {featured.title}
                   </h3>
                   {featured.excerpt && (
