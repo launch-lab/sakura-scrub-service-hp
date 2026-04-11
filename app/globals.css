@@ -12,6 +12,14 @@
   --color-ink: #2b2b2f;
   --color-cta: #4d4d52;
 
+  /* NOTE: セマンティックアクセント。
+     accent-primary は CTA や見出しのハイライト、ドットマークなど "主役色"。
+     accent-soft は hairline や装飾番号など補助的な位置付け。
+     無差別な sakura-500 の撒き散らしを避けるためのトークンで、
+     grep 時に利用量を監査しやすい。 */
+  --color-accent-primary: #e5006a;
+  --color-accent-soft: rgba(229, 0, 106, 0.22);
+
   /* NOTE: ロゴの桜花びらから抽出した正確なマゼンタ (#e5006a) を 500 として 10 段階 */
   --color-sakura-50: #fdf4f9;
   --color-sakura-100: #fbe0ed;
@@ -196,6 +204,19 @@
 
 .animate-marquee:hover {
   animation-play-state: paused;
+}
+
+/* NOTE: OS のモーション削減設定を尊重。
+   花びら落下 / マーキー / Hero のフロート系を全て停止する */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .animate-float {

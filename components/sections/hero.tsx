@@ -1,19 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, Droplets, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { site } from "@/lib/site";
 
 export function Hero() {
+  const shouldReduce = useReducedMotion();
   return (
     <section className="relative isolate overflow-hidden pt-28 pb-20 md:pt-36 md:pb-28">
       <div className="absolute inset-0 -z-10 bg-grid opacity-50 mask-fade-b" />
 
       <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 lg:grid-cols-[1fr_1fr] lg:gap-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={shouldReduce ? false : { opacity: 0, y: 24 }}
+          animate={shouldReduce ? false : { opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 backdrop-blur">
@@ -27,19 +28,29 @@ export function Hero() {
             <span className="block text-base font-medium text-foreground/60 md:text-lg">
               株式会社
             </span>
-            <span className="mt-1 flex items-baseline whitespace-nowrap text-[40px] font-medium leading-[1.05] md:text-[64px] lg:text-[80px]">
+            <span
+              className="mt-2 flex items-baseline whitespace-nowrap font-medium leading-[1.02]"
+              style={{ fontSize: "clamp(2.6rem, 8.2vw, 7rem)" }}
+            >
               <span className="font-decor font-bold text-sakura-500">桜</span>
               <span className="relative mx-1 inline-block">
                 <span className="font-accent relative z-10 font-normal">
                   scrub
                 </span>
-                <span className="absolute inset-x-0 bottom-2 -z-0 h-4 bg-sakura-100 md:h-5" />
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-[0.12em] -z-0 bg-sakura-100"
+                  style={{ height: "0.22em" }}
+                />
               </span>
               サービス
             </span>
           </h1>
 
-          <p className="mt-6 text-[26px] font-normal italic leading-snug text-foreground md:text-[36px] lg:text-[44px]">
+          <p
+            className="mt-6 font-normal italic leading-snug text-foreground"
+            style={{ fontSize: "clamp(1.5rem, 3.4vw, 2.75rem)" }}
+          >
             清潔で快適な空間のご提供
           </p>
 
@@ -67,8 +78,8 @@ export function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={shouldReduce ? false : { opacity: 0, scale: 0.96 }}
+          animate={shouldReduce ? false : { opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
           className="relative"
         >

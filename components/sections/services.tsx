@@ -50,49 +50,34 @@ export function Services() {
         >
           {mainServices.map((s, i) => {
             const index = String(i + 1).padStart(2, "0");
-            const isSky = i % 2 === 1;
-            const tilt = [-1.2, 0.8, -0.6, 1.3, -1.0, 0.7][i] ?? 0;
-
             return (
               <RevealItem as="article" key={s.title} className="group relative">
                 <a href="#contact" className="block">
                   <span
                     aria-hidden
-                    className={`pointer-events-none absolute -top-6 left-0 z-20 font-accent text-5xl leading-none md:-top-8 md:text-6xl lg:-top-10 lg:text-7xl ${
-                      isSky ? "text-sky-500" : "text-sakura-500"
-                    }`}
+                    className="pointer-events-none absolute -top-6 left-0 z-20 font-accent text-5xl leading-none text-foreground/20 transition group-hover:text-[color:var(--color-accent-primary)] md:-top-8 md:text-6xl lg:-top-10 lg:text-7xl"
                   >
                     {index}
                   </span>
 
-                  <div
-                    className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background transition-transform duration-500 ease-out group-hover:!rotate-0"
-                    style={{ transform: `rotate(${tilt}deg)` }}
-                  >
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background ring-1 ring-border">
                     <Image
                       src={s.image}
                       alt={s.title}
                       fill
                       sizes="(max-width: 768px) 50vw, 33vw"
-                      className="object-cover transition duration-700 group-hover:scale-[1.05]"
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 via-transparent to-transparent" />
-                    <div
-                      className={`absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 ${
-                        isSky ? "ring-2 ring-sky-300/70" : "ring-2 ring-sakura-300/70"
-                      } ring-inset rounded-[1.5rem]`}
-                    />
                   </div>
 
                   <div className="mt-5 flex items-start justify-between gap-3 px-1">
-                    <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-sakura-500 md:text-lg lg:text-xl">
+                    <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-[color:var(--color-accent-primary)] md:text-lg lg:text-xl">
                       {s.title}
                     </h3>
                     <span
                       aria-hidden
-                      className={`mt-1 h-px flex-1 translate-y-2 ${
-                        isSky ? "bg-sky-300/60" : "bg-sakura-300/60"
-                      }`}
+                      className="mt-1 h-px flex-1 translate-y-2 bg-border"
                     />
                   </div>
                 </a>

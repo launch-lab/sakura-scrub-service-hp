@@ -49,79 +49,58 @@ export function Flow() {
       className="relative overflow-hidden py-24 md:py-32"
     >
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-sakura-100 to-sakura-50" />
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-50"
-        style={{
-          backgroundImage:
-            "radial-gradient(ellipse at 15% 15%, rgba(255, 255, 255, 0.75) 0%, transparent 55%), radial-gradient(ellipse at 85% 85%, rgba(229, 0, 106, 0.1) 0%, transparent 55%)",
-        }}
-      />
 
       <div className="relative mx-auto max-w-[1440px] px-5 lg:px-8">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="flex items-center justify-center gap-2 font-accent text-base text-muted">
-            <SakuraMark className="h-3 w-3 text-sakura-500" />
-            flow
+        <Reveal className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="flex items-center gap-2 font-accent text-base text-muted">
+              <SakuraMark className="h-3 w-3 text-sakura-500" />
+              flow
+            </p>
+            <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
+              施工までの
+              <span className="font-accent font-normal text-sakura-500">
+                ながれ
+              </span>
+            </h2>
+          </div>
+          <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
+            ご相談から施工完了まで、ていねいにサポートいたします。
           </p>
-          <h2 className="mt-6 text-[36px] font-medium leading-[1.1] tracking-display text-foreground md:text-[56px] lg:text-[68px]">
-            施工までの
-            <span className="font-accent font-normal text-sakura-500">
-              ながれ
-            </span>
-          </h2>
         </Reveal>
 
         <RevealGroup
           as="ol"
-          stagger={0.12}
-          className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 md:mt-24 md:grid-cols-4 md:gap-6 lg:gap-10"
+          stagger={0.1}
+          className="mt-16 grid grid-cols-1 divide-y divide-border border-y border-border md:mt-20 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4"
         >
-          {steps.map((s, i) => {
+          {steps.map((s) => {
             const Icon = s.icon;
-            const isLast = i === steps.length - 1;
             return (
               <RevealItem
                 as="li"
                 key={s.step}
-                direction="up"
-                className="relative flex flex-col items-center text-center"
+                className="group flex items-start gap-5 py-8 md:px-6 md:py-10 lg:px-8"
               >
-                <div className="flex items-baseline gap-3 font-accent text-xl font-normal text-foreground md:text-2xl lg:text-[28px]">
-                  <span className="text-sakura-500">\</span>
-                  <span>
-                    Step{" "}
-                    <span className="text-[1.6em] leading-none">{s.step}</span>
-                  </span>
-                  <span className="text-sakura-500">/</span>
-                </div>
-
-                <div className="mt-6 flex h-32 w-32 items-center justify-center rounded-full border border-border bg-surface shadow-[var(--shadow-card)] md:h-36 md:w-36">
-                  <Icon size={64} weight="fill" className="text-sky-500" />
-                </div>
-
-                {!isLast && (
-                  <span
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-foreground/15 bg-surface/80">
+                  <Icon
+                    size={24}
+                    weight="fill"
+                    className="text-sakura-500"
                     aria-hidden
-                    className="pointer-events-none absolute right-[-10px] top-[104px] hidden text-sakura-500 md:block lg:right-[-16px] lg:top-[116px]"
-                  >
-                    <svg
-                      viewBox="0 0 16 16"
-                      className="h-5 w-5"
-                      fill="currentColor"
-                    >
-                      <path d="M4 2 L12 8 L4 14 Z" />
-                    </svg>
-                  </span>
-                )}
-
-                <h3 className="mt-6 text-lg font-medium text-sakura-500 md:text-xl">
-                  {s.title}
-                </h3>
-
-                <p className="mt-3 w-full rounded-lg border border-border bg-surface/90 p-4 text-left text-xs leading-relaxed text-muted md:text-[13px]">
-                  {s.body}
-                </p>
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="font-accent text-xs text-sakura-500">
+                    Step {s.step}
+                  </p>
+                  <h3 className="mt-2 text-lg font-medium text-foreground md:text-xl">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-[1.8] text-muted">
+                    {s.body}
+                  </p>
+                </div>
               </RevealItem>
             );
           })}

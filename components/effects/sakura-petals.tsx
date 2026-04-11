@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 
 type Props = {
   count?: number;
@@ -32,9 +33,11 @@ const PETAL_PATHS = [
 
 // NOTE: SSR せずクライアントマウント後にのみ描画し、浮動小数のハイドレーションミスマッチを回避
 export function SakuraPetals({ count = 48, className = "", fixed = false }: Props) {
+  const shouldReduce = useReducedMotion();
   const [petals, setPetals] = useState<Petal[] | null>(null);
 
   useEffect(() => {
+    if (shouldReduce) return;
     // NOTE: React 19 のルールを回避しつつハイドレーション後に 1 度だけ生成する
     const rafId = requestAnimationFrame(() => {
       const generated: Petal[] = Array.from({ length: count }, () => {
@@ -58,9 +61,9 @@ export function SakuraPetals({ count = 48, className = "", fixed = false }: Prop
       setPetals(generated);
     });
     return () => cancelAnimationFrame(rafId);
-  }, [count]);
+  }, [count, shouldReduce]);
 
-  if (!petals) return null;
+  if (shouldReduce || !petals) return null;
 
   return (
     <div

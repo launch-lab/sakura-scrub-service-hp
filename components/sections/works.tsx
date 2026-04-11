@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 
@@ -78,12 +79,16 @@ export function Works() {
   // NOTE: 原本 + 複製の 2 セットでドラッグ / 自動スクロールを無限ループ
   const loop = [...works, ...works];
 
+  const shouldReduce = useReducedMotion();
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
   const startX = useRef(0);
   const startScroll = useRef(0);
 
   useEffect(() => {
+    // NOTE: モーション削減指定時は自動スクロールを完全停止してドラッグのみ有効に
+    if (shouldReduce) return;
+
     const el = scrollRef.current;
     if (!el) return;
 
@@ -118,7 +123,7 @@ export function Works() {
 
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
-  }, []);
+  }, [shouldReduce]);
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     const el = scrollRef.current;
@@ -186,7 +191,10 @@ export function Works() {
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
-          className="scrollbar-none flex cursor-grab select-none gap-5 overflow-x-auto px-5 active:cursor-grabbing md:gap-7 lg:px-8"
+          role="region"
+          aria-label="施工事例カルーセル"
+          tabIndex={0}
+          className="scrollbar-none flex cursor-grab select-none gap-5 overflow-x-auto px-5 active:cursor-grabbing focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/30 md:gap-7 lg:px-8"
           style={{ scrollbarWidth: "none" }}
         >
           {loop.map((w, i) => (

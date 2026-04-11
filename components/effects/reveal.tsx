@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ComponentProps, ReactNode } from "react";
 
 type Direction = "up" | "down" | "left" | "right" | "none";
@@ -46,14 +46,15 @@ export function Reveal({
   className,
   as = "div",
 }: RevealProps) {
-  const offset = getOffset(direction, distance);
+  const shouldReduce = useReducedMotion();
+  const offset = shouldReduce ? { x: 0, y: 0 } : getOffset(direction, distance);
   const variants: Variants = {
-    hidden: { opacity: 0, ...offset },
+    hidden: { opacity: shouldReduce ? 1 : 0, ...offset },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration, ease: EASE, delay },
+      transition: { duration: shouldReduce ? 0 : duration, ease: EASE, delay: shouldReduce ? 0 : delay },
     },
   };
 
@@ -94,10 +95,13 @@ export function RevealGroup({
   className,
   as = "div",
 }: RevealGroupProps) {
+  const shouldReduce = useReducedMotion();
   const container: Variants = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: stagger, delayChildren: delay },
+      transition: shouldReduce
+        ? { staggerChildren: 0, delayChildren: 0 }
+        : { staggerChildren: stagger, delayChildren: delay },
     },
   };
 
@@ -135,14 +139,15 @@ export function RevealItem({
   className,
   as = "div",
 }: RevealItemProps) {
-  const offset = getOffset(direction, distance);
+  const shouldReduce = useReducedMotion();
+  const offset = shouldReduce ? { x: 0, y: 0 } : getOffset(direction, distance);
   const variants: Variants = {
-    hidden: { opacity: 0, ...offset },
+    hidden: { opacity: shouldReduce ? 1 : 0, ...offset },
     visible: {
       opacity: 1,
       x: 0,
       y: 0,
-      transition: { duration, ease: EASE },
+      transition: { duration: shouldReduce ? 0 : duration, ease: EASE },
     },
   };
 
