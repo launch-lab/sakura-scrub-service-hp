@@ -11,6 +11,8 @@
 - **アイコン**: Lucide React
 - **フォント**: Noto Sans JP / Shippori Mincho (via `next/font/google`)
 - **Node バージョン管理**: mise (`mise.toml` で Node 22 を固定)
+  - Node 22 は Next.js 16 の推奨 LTS。手元と Vercel で同じ挙動にするため
+    `package.json` の `engines.node` も `22.x` に合わせています
 
 ### 将来の拡張予定
 
