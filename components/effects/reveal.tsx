@@ -14,7 +14,7 @@ type RevealProps = {
   once?: boolean;
   amount?: number;
   className?: string;
-  as?: "div" | "section" | "article" | "li" | "ul" | "ol" | "span" | "header" | "footer" | "figure";
+  as?: "div" | "section" | "article" | "li" | "ul" | "ol" | "dl" | "span" | "header" | "footer" | "figure";
 };
 
 // NOTE: Apple 公式サイトに近い ease-out-expo 系のイージング

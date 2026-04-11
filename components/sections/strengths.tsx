@@ -46,7 +46,7 @@ export function Strengths() {
         className="absolute inset-0 opacity-30"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse at 85% 10%, rgba(236, 22, 131, 0.25) 0%, transparent 45%), radial-gradient(ellipse at 15% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 50%)",
+            "radial-gradient(ellipse at 85% 10%, rgba(229, 0, 106, 0.3) 0%, transparent 45%), radial-gradient(ellipse at 15% 90%, rgba(255, 255, 255, 0.04) 0%, transparent 50%)",
         }}
       />
 

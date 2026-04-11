@@ -4,7 +4,7 @@ import { SakuraMark } from "@/components/brand/sakura-mark";
 const faqs = [
   {
     q: "見積もりは無料ですか？",
-    a: "はい、お見積もりは無料です。お電話またはフォームよりお気軽にご相談ください。現地確認が必要な場合も、出張費は発生しません（対応エリア内）。",
+    a: "はい、お見積もりは無料です。お電話またはフォームよりお気軽にご相談ください。現地確認が必要な場合も、出張費は発生しません(対応エリア内)。",
   },
   {
     q: "対応エリアはどこまでですか？",
@@ -52,14 +52,18 @@ export function Faq() {
 
         <Reveal delay={0.1}>
           <RevealGroup
-            as="dl"
+            as="ol"
             stagger={0.06}
             className="mt-16 border-t border-foreground/15 md:mt-24"
           >
             {faqs.map((f, i) => {
               const number = String(i + 1).padStart(2, "0");
               return (
-                <RevealItem as="div" key={f.q} className="border-b border-border">
+                <RevealItem
+                  as="li"
+                  key={f.q}
+                  className="border-b border-border"
+                >
                   <details className="group [&_summary::-webkit-details-marker]:hidden">
                     <summary className="relative flex cursor-pointer list-none items-baseline gap-6 py-7 pr-10 md:gap-8 md:py-9">
                       <span
@@ -68,9 +72,9 @@ export function Faq() {
                       >
                         {number}
                       </span>
-                      <dt className="flex-1 text-base font-medium leading-[1.6] text-foreground md:text-lg lg:text-xl">
+                      <h3 className="flex-1 text-base font-medium leading-[1.6] text-foreground md:text-lg lg:text-xl">
                         {f.q}
-                      </dt>
+                      </h3>
                       <span
                         aria-hidden
                         className="absolute right-0 top-1/2 flex h-5 w-5 -translate-y-1/2 items-center justify-center text-foreground/60 transition group-open:rotate-45 group-open:text-sakura-500 md:h-6 md:w-6"
@@ -87,15 +91,11 @@ export function Faq() {
                         </svg>
                       </span>
                     </summary>
-                    <dd className="flex gap-6 pb-8 pl-0 text-sm leading-[1.95] text-muted md:gap-8 md:pb-10 md:text-[15px]">
-                      <span
-                        aria-hidden
-                        className="font-accent text-xs tracking-[0.2em] text-subtle md:text-sm"
-                      >
-                        {"—".repeat(1)}
-                      </span>
-                      <p className="flex-1 max-w-2xl">{f.a}</p>
-                    </dd>
+                    <div className="pb-8 pl-[calc(0.75rem+1.5em)] pr-10 md:pb-10 md:pl-[calc(1rem+1.75em)]">
+                      <p className="max-w-2xl text-sm leading-[1.95] text-muted md:text-[15px]">
+                        {f.a}
+                      </p>
+                    </div>
                   </details>
                 </RevealItem>
               );
