@@ -15,6 +15,9 @@ export function LocalBusinessJsonLd() {
     address: {
       "@type": "PostalAddress",
       addressCountry: "JP",
+      postalCode: site.postalCode,
+      addressRegion: "神奈川県",
+      addressLocality: "相模原市中央区",
       streetAddress: site.address,
     },
     areaServed: "JP",

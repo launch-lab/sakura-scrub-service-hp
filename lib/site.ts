@@ -6,11 +6,12 @@ export const site = {
   taglineEn: "Clean and comfortable space",
   description:
     "桜scrubサービスではエアコン、水まわり、お部屋まわりや事務所・店舗等の清掃・空室の退去後の清掃まで承ります。",
-  // NOTE: 仮置きの情報。本番では microCMS から取得予定
+  // NOTE: 将来 microCMS 化予定だが、静的な連絡先はここで一元管理
   url: "https://sakura-scrub.example.com",
-  phone: "000-0000-0000",
-  email: "info@sakura-scrub.example.com",
-  address: "〒000-0000 住所未設定",
+  phone: "042-711-7143",
+  email: "sakurascrub@gmail.com",
+  postalCode: "252-0234",
+  address: "神奈川県相模原市中央区共和4丁目5番6号 成洋商事内2F",
   representative: "丸山 雄也",
   affiliation: "一般社団法人抗菌防カビ清掃技術研究所",
   hours: "9:00 - 18:00（不定休）",

@@ -53,7 +53,11 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-3">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-subtle" />
-              <span>{site.address}</span>
+              <span>
+                〒{site.postalCode}
+                <br />
+                {site.address}
+              </span>
             </li>
           </ul>
           <p className="mt-4 text-xs text-muted/80">受付時間: {site.hours}</p>
