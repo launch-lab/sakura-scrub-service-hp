@@ -40,7 +40,39 @@ const works = [
   },
 ];
 
+function WorkCard({ work }: { work: (typeof works)[number] }) {
+  return (
+    <figure className="group flex w-[300px] shrink-0 flex-col md:w-[360px]">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[1.25rem] bg-background">
+        <Image
+          src={work.src}
+          alt={work.title}
+          width={400}
+          height={500}
+          sizes="360px"
+          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+        />
+      </div>
+      <figcaption className="mt-5 flex flex-col gap-2 px-1">
+        <div className="flex items-center gap-3">
+          <span className="font-accent text-sm text-sakura-500">
+            {work.index}
+          </span>
+          <span className="h-px flex-1 bg-border" />
+          <span className="font-accent text-xs text-subtle">{work.tag}</span>
+        </div>
+        <h3 className="text-lg font-medium leading-tight text-foreground md:text-xl">
+          {work.title}
+        </h3>
+      </figcaption>
+    </figure>
+  );
+}
+
 export function Works() {
+  // NOTE: 原本 + 複製の 2 セットで無限ループ。1 セット分ぶんを -50% 移動するだけで連続する
+  const loop = [...works, ...works];
+
   return (
     <section id="works" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
@@ -61,47 +93,18 @@ export function Works() {
               施工実績をご覧ください。
             </p>
           </div>
-          <div className="hidden items-center gap-3 text-xs text-muted md:flex">
-            <span className="font-accent text-base text-sakura-500">scroll →</span>
-          </div>
         </Reveal>
       </div>
 
-      <Reveal direction="left" delay={0.1} className="mt-14">
-        <div className="scrollbar-none -mb-6 flex snap-x snap-mandatory gap-5 overflow-x-auto px-5 pb-6 md:gap-7 lg:px-[max(theme(spacing.8),calc((100vw-80rem)/2))]">
-          {works.map((w) => (
-            <figure
-              key={w.src}
-              className="group relative shrink-0 snap-start overflow-hidden rounded-[2rem] border border-border bg-surface shadow-[var(--shadow-card)]"
-              style={{ width: "min(78vw, 520px)" }}
-            >
-              <div className="relative aspect-[4/5]">
-                <Image
-                  src={w.src}
-                  alt={w.title}
-                  fill
-                  sizes="(max-width: 768px) 78vw, 520px"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent" />
-
-                <span className="absolute left-6 top-6 font-accent text-4xl text-white/80 md:text-5xl">
-                  {w.index}
-                </span>
-              </div>
-
-              <figcaption className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                <span className="inline-flex items-center rounded-full border border-white/25 bg-white/10 px-3 py-1 font-accent text-xs text-white backdrop-blur">
-                  {w.tag}
-                </span>
-                <p className="mt-3 text-xl font-medium text-white md:text-2xl">
-                  {w.title}
-                </p>
-              </figcaption>
-            </figure>
+      <Reveal
+        direction="left"
+        delay={0.1}
+        className="mt-14 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+      >
+        <div className="animate-marquee flex gap-6 md:gap-8">
+          {loop.map((w, i) => (
+            <WorkCard key={`${w.src}-${i}`} work={w} />
           ))}
-
-          <div className="shrink-0 snap-start" style={{ width: "1px" }} />
         </div>
       </Reveal>
     </section>

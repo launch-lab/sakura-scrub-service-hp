@@ -176,6 +176,21 @@
   100% { transform: translate(var(--drift, 20px), 110vh) rotate(420deg); }
 }
 
+/* NOTE: Works セクションの横マーキー用。原本 + 複製の合計幅を -50% 移動して無限ループ */
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-x 80s linear infinite;
+  width: max-content;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
 .animate-float {
   animation: float-up 6s ease-in-out infinite;
 }

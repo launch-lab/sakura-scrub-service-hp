@@ -65,23 +65,17 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-border pt-10">
+          <dl className="mt-14 grid max-w-xl grid-cols-2 gap-6 border-t border-border pt-10">
             <div>
-              <dt className="font-accent text-xs text-subtle">patent</dt>
+              <dt className="text-xs tracking-wide text-subtle">特許</dt>
               <dd className="mt-3 font-accent text-5xl font-normal leading-none text-foreground md:text-6xl">
                 2<span className="ml-1 align-top text-sm text-muted">件</span>
               </dd>
             </div>
             <div>
-              <dt className="font-accent text-xs text-subtle">menu</dt>
-              <dd className="mt-3 font-accent text-5xl font-normal leading-none text-foreground md:text-6xl">
-                8<span className="ml-1 align-top text-sm text-muted">種+</span>
-              </dd>
-            </div>
-            <div>
-              <dt className="font-accent text-xs text-subtle">client</dt>
+              <dt className="text-xs tracking-wide text-subtle">対応</dt>
               <dd className="mt-3 text-3xl font-medium leading-none text-foreground md:text-4xl">
-                両対応
+                個人 / 法人
               </dd>
             </div>
           </dl>
