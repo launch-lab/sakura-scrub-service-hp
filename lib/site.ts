@@ -1,9 +1,11 @@
 export const site = {
-  name: "桜 Scrub サービス",
+  name: "桜scrubサービス",
+  legalName: "株式会社桜scrubサービス",
   nameEn: "Sakura Scrub Service",
-  tagline: "Clean and comfortable space",
+  tagline: "清潔で快適な空間のご提供",
+  taglineEn: "Clean and comfortable space",
   description:
-    "桜 Scrub サービスは、特許技術を用いた防カビ・レジオネラ対策に強いハウスクリーニング・エアコン分解洗浄の専門業者です。ご家庭から企業様施設まで、清潔で快適な空間をご提供します。",
+    "桜scrubサービスではエアコン、水まわり、お部屋まわりや事務所・店舗等の清掃・空室の退去後の清掃まで承ります。",
   // NOTE: 仮置きの情報。本番では microCMS から取得予定
   url: "https://sakura-scrub.example.com",
   phone: "000-0000-0000",

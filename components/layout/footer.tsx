@@ -62,8 +62,8 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-between gap-3 px-5 py-6 text-xs text-muted md:flex-row lg:px-8">
-          <p>© {new Date().getFullYear()} {site.name}. All rights reserved.</p>
-          <p className="font-italic-display text-base text-muted">{site.tagline}</p>
+          <p>© {new Date().getFullYear()} {site.legalName}. All rights reserved.</p>
+          <p className="font-italic-display text-base text-muted">{site.taglineEn}</p>
         </div>
       </div>
     </footer>

@@ -86,10 +86,12 @@ export function Strengths() {
 
           <div className="flex flex-col justify-center gap-10">
             <Reveal direction="up" delay={0.2}>
-              <p className="text-base leading-[1.95] text-white/70 md:text-[17px]">
-                桜 Scrub サービスが目指すのは「清潔で快適な空間」の提供です。
-                見た目のキレイさだけでなく、カビ・レジオネラ菌といった目に見えない汚れまで
-                特許技術で根本から解決。お客様の健康と安全をお守りします。
+              <p className="text-base leading-[1.95] text-white/75 md:text-[17px]">
+                カビ対策の特許技術「高耐久型防カビ工法」と、
+                それを応用して作られた除菌剤によるレジオネラ症対策のための
+                エアコンクリーニングと浴槽の配管クリーニングを行います。
+                <br />
+                一般のご家庭から企業様・施設様の衛生面、健康面をお守りいたします。
               </p>
             </Reveal>
 

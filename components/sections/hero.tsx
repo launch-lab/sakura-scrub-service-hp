@@ -19,28 +19,31 @@ export function Hero() {
         >
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 px-4 py-1.5 backdrop-blur">
             <Sparkles className="h-3.5 w-3.5 text-sakura-500" />
-            <span className="font-italic-display text-sm text-foreground/80">
-              patented anti-mold & legionella care
+            <span className="text-sm text-foreground/80">
+              特許技術による防カビ・レジオネラ対策
             </span>
           </div>
 
-          <h1 className="mt-10 text-[44px] font-medium leading-[1.08] tracking-display text-foreground text-balance md:text-[72px] lg:text-[92px]">
-            清潔で、
-            <span className="relative inline-block">
-              <span className="relative z-10">快適</span>
-              <span className="absolute inset-x-0 bottom-2 -z-0 h-4 bg-sakura-100 md:h-5" />
+          <h1 className="mt-10 tracking-display text-foreground">
+            <span className="block text-base font-medium text-foreground/60 md:text-lg">
+              株式会社
             </span>
-            な空間を
-            <br />
-            <span className="font-script text-[36px] font-normal text-foreground md:text-[54px] lg:text-[68px]">
-              ひとつひとつ、ていねいに
+            <span className="mt-1 block whitespace-nowrap text-[40px] font-medium leading-[1.05] md:text-[64px] lg:text-[80px]">
+              <span className="text-sakura-500">桜</span>
+              <span className="relative inline-block">
+                <span className="relative z-10">scrub</span>
+                <span className="absolute inset-x-0 bottom-2 -z-0 h-4 bg-sakura-100 md:h-5" />
+              </span>
+              サービス
             </span>
           </h1>
 
+          <p className="mt-6 font-script text-[26px] font-normal leading-snug text-foreground md:text-[36px] lg:text-[44px]">
+            清潔で快適な空間のご提供
+          </p>
+
           <p className="mt-8 max-w-xl text-base font-normal leading-[1.9] text-muted md:text-[17px]">
-            エアコン分解洗浄・浴室配管クリーニング・ハウスクリーニングから、
-            企業様施設の定期清掃まで。国が認定した特許技術で、普段のお掃除では落とせない
-            汚れとカビを根本から解決します。
+            {site.description}
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

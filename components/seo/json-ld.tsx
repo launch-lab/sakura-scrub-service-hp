@@ -5,6 +5,7 @@ export function LocalBusinessJsonLd() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: site.name,
+    legalName: site.legalName,
     alternateName: site.nameEn,
     description: site.description,
     url: site.url,

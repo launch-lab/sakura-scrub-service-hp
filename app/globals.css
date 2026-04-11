@@ -134,10 +134,11 @@
     font-family: var(--font-script);
   }
 
+  /* NOTE: クラス名に italic が残っているが、アクセント用の非 italic Fraunces として使用 */
   .font-italic-display {
     font-family: var(--font-display);
-    font-style: italic;
     font-weight: 400;
+    letter-spacing: 0.01em;
   }
 
   .scrollbar-none {

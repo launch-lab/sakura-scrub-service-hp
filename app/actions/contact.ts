@@ -89,7 +89,7 @@ export async function submitContact(
       from: fromAddress,
       to: toAddress,
       replyTo: data.email,
-      subject: `【${site.name}】お問い合わせ: ${data.category}`,
+      subject: `【${site.legalName}】お問い合わせ: ${data.category}`,
       text: [
         `お名前: ${data.name}`,
         `メール: ${data.email}`,
