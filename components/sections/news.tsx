@@ -69,8 +69,11 @@ export function News() {
               <SakuraMark className="h-3 w-3 text-sakura-500" />
               news
             </p>
-            <h2 className="mt-6 font-accent text-[64px] font-normal leading-[1] tracking-display text-foreground md:text-[96px] lg:text-[120px]">
-              <span className="text-sakura-500">N</span>ews
+            <h2 className="mt-6 text-[40px] font-medium leading-[1.05] tracking-display text-foreground md:text-[64px] lg:text-[80px]">
+              <span className="font-accent font-normal text-sakura-500">
+                最新
+              </span>
+              情報
             </h2>
           </div>
           <p className="w-full text-sm leading-[1.95] text-muted md:ml-auto md:w-auto md:whitespace-nowrap md:pb-4 md:text-right md:text-[15px]">
