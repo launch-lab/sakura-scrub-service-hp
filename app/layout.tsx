@@ -59,6 +59,11 @@ export const metadata: Metadata = {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
   },
+  // NOTE: 調整完了後に削除する
+  robots: {
+    index: false,
+    follow: false,
+  },
   // NOTE: app/icon.png / app/apple-icon.png / app/favicon.ico を Next.js が自動検出する
   other: {
     // NOTE: iOS Safari が電話番号・住所を自動でリンク化するのを抑制
