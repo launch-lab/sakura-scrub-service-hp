@@ -1,27 +1,25 @@
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
+import { client, type ServiceItem } from "@/lib/microcms";
 
-const mainServices = [
-  { title: "家庭用エアコンクリーニング", image: "/images/works/home-aircon.jpg" },
-  { title: "業務用エアコンクリーニング", image: "/images/works/commercial-aircon.jpg" },
-  { title: "防カビコーティング", image: "/images/works/aircon-cleaning.jpg" },
-  { title: "追い焚き配管洗浄", image: "/images/works/bath-pipe.jpg" },
-  { title: "循環式浴槽配管洗浄", image: "/images/works/bath-cleaning.jpg" },
-  { title: "車内クリーニング", image: "/images/works/car-interior.jpg" },
-];
+async function fetchServices(): Promise<ServiceItem[]> {
+  const data = await client.getList<ServiceItem>({
+    endpoint: "services",
+    queries: { limit: 12, orders: "publishedAt" },
+    customRequestInit: { next: { revalidate: 3600 } },
+  });
+  return data.contents;
+}
 
-const houseCleaningMenu = [
-  "レンジフードクリーニング",
-  "浴室クリーニング",
-  "トイレクリーニング",
-  "洗面台クリーニング",
-  "窓サッシクリーニング",
-  "お部屋周りクリーニング",
-  "バルコニー、外周りクリーニング",
-];
+export async function Services() {
+  let services: ServiceItem[] = [];
+  try {
+    services = await fetchServices();
+  } catch {
+    services = [];
+  }
 
-export function Services() {
   return (
     <section id="services" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
@@ -48,11 +46,11 @@ export function Services() {
           stagger={0.08}
           className="mt-14 grid grid-cols-2 gap-x-5 gap-y-10 md:mt-24 md:grid-cols-3 md:gap-x-10 md:gap-y-16"
         >
-          {mainServices.map((s, i) => {
+          {services.map((s, i) => {
             const index = String(i + 1).padStart(2, "0");
             return (
-              <RevealItem as="article" key={s.title} className="group relative">
-                <a href="#contact" className="block">
+              <RevealItem as="article" key={s.id} className="group relative">
+                <a href={`/services/${s.id}`} className="block">
                   <span
                     aria-hidden
                     className="pointer-events-none absolute -top-6 left-0 z-20 font-accent text-5xl leading-none text-foreground/20 transition group-hover:text-[color:var(--color-accent-primary)] md:-top-8 md:text-6xl lg:-top-10 lg:text-7xl"
@@ -62,7 +60,7 @@ export function Services() {
 
                   <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-background ring-1 ring-border">
                     <Image
-                      src={s.image}
+                      src={s.image.url}
                       alt={s.title}
                       fill
                       sizes="(max-width: 768px) 50vw, 33vw"
@@ -85,28 +83,6 @@ export function Services() {
             );
           })}
         </RevealGroup>
-
-        <Reveal className="mt-20 md:mt-28">
-          <div className="flex items-baseline border-b border-foreground/20 pb-4">
-            <h3 className="text-lg font-medium text-foreground md:text-xl">
-              ハウスクリーニングメニュー
-            </h3>
-          </div>
-          <ol className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {houseCleaningMenu.map((item, i) => (
-              <li
-                key={item}
-                className="flex items-baseline gap-5 border-b border-border py-5 text-foreground/85"
-              >
-                <span className="font-accent text-xs text-sky-500">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-base md:text-[17px]">{item}</span>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
-
       </div>
     </section>
   );

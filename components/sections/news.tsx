@@ -2,63 +2,52 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
+import { client, type NewsItem } from "@/lib/microcms";
 
-// NOTE: 将来 microCMS から取得する想定のダミーデータ。
-// 型は CMS レスポンスに寄せておき、差し替え時は fetchNews() 関数で返す形に。
 export type NewsEntry = {
   id: string;
   title: string;
-  publishedAt: string; // ISO 8601 形式
+  publishedAt: string;
   thumbnail: string;
   category?: string;
   excerpt?: string;
   href: string;
 };
 
-const dummyNews: NewsEntry[] = [
-  {
-    id: "1",
-    title: "春のエアコンクリーニングキャンペーンを開始しました",
-    publishedAt: "2026-04-01",
-    thumbnail: "/images/works/home-aircon.jpg",
-    category: "キャンペーン",
-    excerpt:
-      "カビが繁殖しやすくなる梅雨前がクリーニングのベストタイミング。春割キャンペーンを期間限定でご提供します。",
-    href: "#",
-  },
-  {
-    id: "2",
-    title: "追い焚き配管洗浄の施工事例を追加しました",
-    publishedAt: "2026-03-22",
-    thumbnail: "/images/works/bath-pipe.jpg",
-    category: "施工事例",
-    href: "#",
-  },
-  {
-    id: "3",
-    title: "カビとレジオネラ対策の基礎知識",
-    publishedAt: "2026-03-10",
-    thumbnail: "/images/works/bath-cleaning.jpg",
-    category: "コラム",
-    href: "#",
-  },
-  {
-    id: "4",
-    title: "業務用エアコンの定期メンテナンス受付中",
-    publishedAt: "2026-02-28",
-    thumbnail: "/images/works/commercial-aircon.jpg",
-    category: "お知らせ",
-    href: "#",
-  },
-];
+async function fetchNews(): Promise<NewsEntry[]> {
+  const data = await client.getList<NewsItem>({
+    endpoint: "news",
+    queries: { limit: 4, orders: "-publishedAt" },
+    customRequestInit: { next: { revalidate: 3600 } },
+  });
+  return data.contents.map((item) => ({
+    id: item.id,
+    title: item.title,
+    publishedAt: item.publishedAt.slice(0, 10),
+    thumbnail: item.thumbnail.url,
+    category: item.category,
+    excerpt: item.excerpt,
+    href: `/news/${item.id}`,
+  }));
+}
 
 function formatDate(iso: string) {
   const [year, month, day] = iso.split("-");
   return `${year}.${month}.${day}`;
 }
 
-export function News() {
-  const [featured, ...rest] = dummyNews;
+export async function News() {
+  let items: NewsEntry[] = [];
+  try {
+    items = await fetchNews();
+  } catch {
+    // コンテンツ未登録時はセクション非表示
+    return null;
+  }
+
+  if (items.length === 0) return null;
+
+  const [featured, ...rest] = items;
 
   return (
     <section id="news" className="relative py-24 md:py-32">
@@ -138,54 +127,56 @@ export function News() {
         </Reveal>
 
         {/* Sub articles */}
-        <div className="mt-16 border-t border-border pt-10 md:mt-24 md:pt-14">
-          <div className="mb-8 flex items-baseline justify-between">
-            <h4 className="font-accent text-sm text-subtle">— more stories</h4>
-            <a
-              href="#"
-              className="font-accent text-sm text-sakura-500 transition hover:text-sakura-600"
+        {rest.length > 0 && (
+          <div className="mt-16 border-t border-border pt-10 md:mt-24 md:pt-14">
+            <div className="mb-8 flex items-baseline justify-between">
+              <h4 className="font-accent text-sm text-subtle">— more stories</h4>
+              <a
+                href="#"
+                className="font-accent text-sm text-sakura-500 transition hover:text-sakura-600"
+              >
+                全ての記事を見る →
+              </a>
+            </div>
+            <RevealGroup
+              stagger={0.08}
+              className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8"
             >
-              全ての記事を見る →
-            </a>
+              {rest.map((entry) => (
+                <RevealItem as="article" key={entry.id} className="group">
+                  <a href={entry.href} className="block">
+                    <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-background ring-1 ring-border">
+                      <Image
+                        src={entry.thumbnail}
+                        alt={entry.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition duration-700 group-hover:scale-[1.06]"
+                      />
+                    </div>
+                    <div className="mt-4 flex items-center gap-3">
+                      <time
+                        dateTime={entry.publishedAt}
+                        className="font-accent text-xs text-subtle"
+                      >
+                        {formatDate(entry.publishedAt)}
+                      </time>
+                      <span className="h-px flex-1 bg-border" />
+                      {entry.category && (
+                        <span className="text-[11px] tracking-wide text-sky-500">
+                          {entry.category}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="mt-3 text-base font-medium leading-snug text-foreground transition group-hover:text-sakura-500 md:text-[17px]">
+                      {entry.title}
+                    </h3>
+                  </a>
+                </RevealItem>
+              ))}
+            </RevealGroup>
           </div>
-          <RevealGroup
-            stagger={0.08}
-            className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-8"
-          >
-            {rest.map((entry) => (
-              <RevealItem as="article" key={entry.id} className="group">
-                <a href={entry.href} className="block">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-background ring-1 ring-border">
-                    <Image
-                      src={entry.thumbnail}
-                      alt={entry.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition duration-700 group-hover:scale-[1.06]"
-                    />
-                  </div>
-                  <div className="mt-4 flex items-center gap-3">
-                    <time
-                      dateTime={entry.publishedAt}
-                      className="font-accent text-xs text-subtle"
-                    >
-                      {formatDate(entry.publishedAt)}
-                    </time>
-                    <span className="h-px flex-1 bg-border" />
-                    {entry.category && (
-                      <span className="text-[11px] tracking-wide text-sky-500">
-                        {entry.category}
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mt-3 text-base font-medium leading-snug text-foreground transition group-hover:text-sakura-500 md:text-[17px]">
-                    {entry.title}
-                  </h3>
-                </a>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
+        )}
       </div>
     </section>
   );
