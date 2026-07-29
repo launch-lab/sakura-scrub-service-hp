@@ -42,7 +42,7 @@ async function fetchWorks(): Promise<WorkCardData[]> {
     queries: { limit: 12, orders: "-publishedAt" },
     customRequestInit: { next: { revalidate: 3600 } },
   });
-  return data.contents.map((item, i) => {
+  return data.contents.filter((item) => item.image?.url).map((item, i) => {
     const size = (item.size?.fieldId ?? "portrait") as WorkSize;
     const category = item.category?.fieldId ?? "";
     const sub = item.subcategory?.fieldId ?? "";

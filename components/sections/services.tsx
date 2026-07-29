@@ -9,7 +9,7 @@ async function fetchServices(): Promise<ServiceItem[]> {
     queries: { limit: 12, orders: "publishedAt" },
     customRequestInit: { next: { revalidate: 3600 } },
   });
-  return data.contents;
+  return data.contents.filter((s) => s.image?.url);
 }
 
 export async function Services() {
@@ -17,8 +17,10 @@ export async function Services() {
   try {
     services = await fetchServices();
   } catch {
-    services = [];
+    return null;
   }
+
+  if (services.length === 0) return null;
 
   return (
     <section id="services" className="relative py-24 md:py-32">

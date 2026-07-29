@@ -20,7 +20,7 @@ async function fetchNews(): Promise<NewsEntry[]> {
     queries: { limit: 4, orders: "-publishedAt" },
     customRequestInit: { next: { revalidate: 3600 } },
   });
-  return data.contents.map((item) => ({
+  return data.contents.filter((item) => item.thumbnail?.url).map((item) => ({
     id: item.id,
     title: item.title,
     publishedAt: item.publishedAt.slice(0, 10),
