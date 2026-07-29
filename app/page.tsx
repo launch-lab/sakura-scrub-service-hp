@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { About } from "@/components/sections/about";
 import { Contact } from "@/components/sections/contact";
 import { Faq } from "@/components/sections/faq";
@@ -12,10 +13,16 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Services />
-      <News />
+      <Suspense>
+        <Services />
+      </Suspense>
+      <Suspense>
+        <News />
+      </Suspense>
       <Strengths />
-      <Works />
+      <Suspense>
+        <Works />
+      </Suspense>
       <Flow />
       <Faq />
       <About />
