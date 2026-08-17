@@ -7,7 +7,7 @@ import { submitContact, type ContactState } from "@/app/actions/contact";
 
 const initialState: ContactState = { ok: false };
 
-const categories = [
+const FALLBACK_CATEGORIES = [
   "家庭用エアコンクリーニング",
   "業務用エアコンクリーニング",
   "追い焚き配管洗浄",
@@ -18,7 +18,7 @@ const categories = [
   "その他 / 相談",
 ] as const;
 
-export function ContactForm() {
+export function ContactForm({ categories = FALLBACK_CATEGORIES }: { categories?: readonly string[] }) {
   const [state, formAction] = useActionState(submitContact, initialState);
   const formId = useId();
 

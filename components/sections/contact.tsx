@@ -3,6 +3,7 @@ import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 import { ContactForm } from "@/components/forms/contact-form";
 import { site } from "@/lib/site";
+import { client, type ServiceItem } from "@/lib/microcms";
 
 type Channel = {
   icon: React.ComponentType<{ className?: string }>;
@@ -27,7 +28,22 @@ const channels: Channel[] = [
   },
 ];
 
-export function Contact() {
+async function fetchServiceCategories(): Promise<string[]> {
+  const data = await client.getList<ServiceItem>({
+    endpoint: "services",
+    queries: { limit: 20, orders: "publishedAt", fields: "title" },
+    customRequestInit: { next: { revalidate: 3600 } },
+  });
+  return [...data.contents.map((s) => s.title), "その他 / 相談"];
+}
+
+export async function Contact() {
+  let categories: string[] | undefined;
+  try {
+    categories = await fetchServiceCategories();
+  } catch {
+    // CMS 取得失敗時はフォーム側のフォールバック値を使用
+  }
   return (
     <section
       id="contact"
@@ -121,7 +137,7 @@ export function Contact() {
                   — send us a message
                 </p>
               </div>
-              <ContactForm />
+              <ContactForm categories={categories} />
             </div>
           </Reveal>
         </div>
