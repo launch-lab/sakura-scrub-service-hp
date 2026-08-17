@@ -50,9 +50,6 @@ export function Hero() {
         </p>
 
         <h1 className="mt-6 tracking-display text-white">
-          <span className="block text-sm font-medium text-white/60 md:text-base">
-            株式会社
-          </span>
           <span
             className="mt-3 flex items-baseline whitespace-nowrap font-medium leading-[1]"
             style={{ fontSize: "clamp(2rem, 9.5vw, 10rem)" }}
