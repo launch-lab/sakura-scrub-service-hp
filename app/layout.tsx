@@ -10,9 +10,10 @@ import { getSiteUrl, site } from "@/lib/site";
 
 const kaiseiHarunoUmi = Kaisei_HarunoUmi({
   variable: "--font-body-jp",
-  subsets: ["latin"],
+  subsets: ["latin", "japanese"],
   weight: ["400", "500", "700"],
   display: "swap",
+  preload: false,
 });
 
 const fraunces = Fraunces({
@@ -25,16 +26,18 @@ const fraunces = Fraunces({
 
 const kleeOne = Klee_One({
   variable: "--font-script-jp",
-  subsets: ["latin"],
+  subsets: ["latin", "japanese"],
   weight: ["400", "600"],
   display: "swap",
+  preload: false,
 });
 
 const kaiseiDecol = Kaisei_Decol({
   variable: "--font-decor-jp",
-  subsets: ["latin"],
+  subsets: ["latin", "japanese"],
   weight: ["500", "700"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = getSiteUrl();
