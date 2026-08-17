@@ -60,7 +60,7 @@ export function Hero() {
             <span className="font-decor font-bold text-sakura-300">桜</span>
             <span className="relative mx-1 inline-block">
               <span className="font-accent relative z-10 font-normal text-white">
-                scrub
+                Scrub
               </span>
               <span
                 aria-hidden

@@ -1,11 +1,11 @@
 export const site = {
-  name: "桜scrubサービス",
-  legalName: "株式会社桜scrubサービス",
+  name: "桜Scrubサービス",
+  legalName: "株式会社桜Scrubサービス",
   nameEn: "Sakura Scrub Service",
   tagline: "清潔で快適な空間のご提供",
   taglineEn: "Clean and comfortable space",
   description:
-    "桜scrubサービスではエアコン、水まわり、お部屋まわりや事務所・店舗等の清掃・空室の退去後の清掃まで承ります。",
+    "桜Scrubサービスではエアコン、水まわり、お部屋まわりや事務所・店舗等の清掃・空室の退去後の清掃まで承ります。",
   // NOTE: 将来 microCMS 化予定だが、静的な連絡先はここで一元管理
   url: "https://sakura-scrub.example.com",
   phone: "042-711-7143",

@@ -65,7 +65,7 @@ export default function OpenGraphImage() {
             }}
           >
             <span style={{ color: "#e5006a" }}>桜</span>
-            <span style={{ fontStyle: "italic", margin: "0 8px" }}>scrub</span>
+            <span style={{ fontStyle: "italic", margin: "0 8px" }}>Scrub</span>
             <span>サービス</span>
           </div>
           <div
