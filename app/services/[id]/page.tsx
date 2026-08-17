@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { client, type ServiceItem } from "@/lib/microcms";
-import { site } from "@/lib/site";
+import { getSiteUrl, site } from "@/lib/site";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -22,9 +22,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       endpoint: "services",
       contentId: id,
     });
+    const siteUrl = getSiteUrl();
     return {
       title: service.title,
       description: service.description,
+      openGraph: {
+        title: `${service.title} | ${site.name}`,
+        description: service.description,
+        url: `${siteUrl}/services/${id}`,
+        siteName: site.name,
+        locale: "ja_JP",
+        type: "website",
+        images: [{ url: service.image.url, alt: service.title }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${service.title} | ${site.name}`,
+        description: service.description,
+        images: [service.image.url],
+      },
     };
   } catch {
     return { title: "サービス詳細" };
@@ -45,8 +61,27 @@ export default async function ServiceDetailPage({ params }: Props) {
     notFound();
   }
 
+  const siteUrl = getSiteUrl();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    url: `${siteUrl}/services/${id}`,
+    provider: {
+      "@type": "LocalBusiness",
+      name: site.name,
+      telephone: site.phone,
+    },
+    ...(service.price ? { offers: { "@type": "Offer", price: service.price, priceCurrency: "JPY" } } : {}),
+  };
+
   return (
     <main className="mx-auto max-w-[900px] px-5 py-24 lg:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Link
         href="/#services"
         className="inline-flex items-center gap-2 font-accent text-sm text-muted transition hover:text-foreground"

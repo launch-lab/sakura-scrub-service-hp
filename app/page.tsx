@@ -26,7 +26,9 @@ export default function Home() {
       <Flow />
       <Faq />
       <About />
-      <Contact />
+      <Suspense>
+        <Contact />
+      </Suspense>
     </>
   );
 }
