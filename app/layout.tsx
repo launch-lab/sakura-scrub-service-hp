@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingCTA } from "@/components/layout/floating-cta";
 import { SakuraPetals } from "@/components/effects/sakura-petals";
-import { LocalBusinessJsonLd, FaqPageJsonLd } from "@/components/seo/json-ld";
+import { LocalBusinessJsonLd, FaqPageJsonLd, HowToJsonLd } from "@/components/seo/json-ld";
 import { getSiteUrl, site } from "@/lib/site";
 
 const kaiseiHarunoUmi = Kaisei_HarunoUmi({
@@ -89,6 +89,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <LocalBusinessJsonLd />
         <FaqPageJsonLd />
+        <HowToJsonLd />
         <SakuraPetals fixed count={28} />
         <Header />
         <main className="flex-1">{children}</main>

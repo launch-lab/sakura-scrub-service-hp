@@ -68,6 +68,48 @@ export function LocalBusinessJsonLd() {
   );
 }
 
+export function HowToJsonLd() {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "桜Scrubサービスのご利用の流れ",
+    description: "お問い合わせから施工完了までの手順です。",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "お問い合わせ",
+        text: "まずはお問い合わせフォームまたはお電話からご連絡ください。",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "ヒアリング・ご提案",
+        text: "清掃箇所をヒアリングし、最適な施工プランをご提案します。",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "お見積り",
+        text: "ご提案した施工プランに基づいてお見積りを作成します。",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "施工",
+        text: "熟練スタッフが丁寧に施工します。",
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 export function FaqPageJsonLd() {
   const data = {
     "@context": "https://schema.org",
