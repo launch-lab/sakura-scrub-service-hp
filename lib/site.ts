@@ -39,7 +39,7 @@ export function getSiteUrl() {
 }
 
 export const nav = [
-  { href: "#services", label: "サービス" },
+  { href: "#services", label: "施工メニュー" },
   { href: "#news", label: "お知らせ" },
   { href: "#strengths", label: "強み" },
   { href: "#works", label: "施工事例" },

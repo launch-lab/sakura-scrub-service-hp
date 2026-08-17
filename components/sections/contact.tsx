@@ -1,4 +1,4 @@
-import { CalendarCheck, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 import { ContactForm } from "@/components/forms/contact-form";
@@ -24,20 +24,6 @@ const channels: Channel[] = [
     label: "email",
     heading: site.email,
     href: `mailto:${site.email}`,
-  },
-  {
-    icon: CalendarCheck,
-    label: "booking",
-    heading: "オンライン予約",
-    href: null,
-    note: "準備中",
-  },
-  {
-    icon: MapPin,
-    label: "area",
-    heading: "対応エリア",
-    href: null,
-    note: "調整中",
   },
 ];
 
