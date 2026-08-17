@@ -1,17 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/effects/reveal";
 import { SakuraMark } from "@/components/brand/sakura-mark";
 import type { WorkCardData } from "./works";
 
-function WorkCard({ work }: { work: WorkCardData }) {
+function WorkCard({
+  work,
+  onClickGuard,
+}: {
+  work: WorkCardData;
+  onClickGuard: (e: React.MouseEvent) => void;
+}) {
   const { card, aspect } = work.sizeClass;
   return (
-    <figure
-      className={`group pointer-events-none flex shrink-0 flex-col ${card}`}
+    <a
+      href={work.href}
+      onClick={onClickGuard}
+      className={`group flex shrink-0 flex-col ${card}`}
     >
       <div
         className={`relative overflow-hidden rounded-[1.25rem] bg-background ${aspect}`}
@@ -21,11 +29,11 @@ function WorkCard({ work }: { work: WorkCardData }) {
           alt={work.title}
           fill
           sizes="(max-width: 640px) 260px, (max-width: 1024px) 340px, 400px"
-          className="object-cover"
+          className="object-cover transition duration-700 group-hover:scale-[1.04]"
           draggable={false}
         />
       </div>
-      <figcaption className="mt-5 flex flex-col gap-2 px-1">
+      <div className="mt-5 flex flex-col gap-2 px-1">
         <div className="flex items-center gap-3">
           <span className="font-accent text-sm text-sakura-500">
             {work.index}
@@ -33,11 +41,11 @@ function WorkCard({ work }: { work: WorkCardData }) {
           <span className="h-px flex-1 bg-border" />
           <span className="font-accent text-xs text-subtle">{work.tag}</span>
         </div>
-        <h3 className="text-base font-medium leading-tight text-foreground md:text-lg lg:text-xl">
+        <h3 className="text-base font-medium leading-tight text-foreground transition group-hover:text-sakura-500 md:text-lg lg:text-xl">
           {work.title}
         </h3>
-      </figcaption>
-    </figure>
+      </div>
+    </a>
   );
 }
 
@@ -48,8 +56,13 @@ export function WorksCarousel({ works }: { works: WorkCardData[] }) {
   const shouldReduce = useReducedMotion();
   const scrollRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
+  const didDrag = useRef(false);
   const startX = useRef(0);
   const startScroll = useRef(0);
+
+  const handleCardClick = useCallback((e: React.MouseEvent) => {
+    if (didDrag.current) e.preventDefault();
+  }, []);
 
   useEffect(() => {
     // NOTE: モーション削減指定時は自動スクロールを完全停止してドラッグのみ有効に
@@ -94,6 +107,7 @@ export function WorksCarousel({ works }: { works: WorkCardData[] }) {
     const el = scrollRef.current;
     if (!el) return;
     isDragging.current = true;
+    didDrag.current = false;
     if (e.pointerType === "mouse") {
       startX.current = e.clientX;
       startScroll.current = el.scrollLeft;
@@ -106,6 +120,7 @@ export function WorksCarousel({ works }: { works: WorkCardData[] }) {
     const el = scrollRef.current;
     if (!el || !isDragging.current) return;
     const dx = e.clientX - startX.current;
+    if (Math.abs(dx) > 5) didDrag.current = true;
     el.scrollLeft = startScroll.current - dx;
   };
 
@@ -116,6 +131,7 @@ export function WorksCarousel({ works }: { works: WorkCardData[] }) {
     if (e.pointerType === "mouse" && el.hasPointerCapture(e.pointerId)) {
       el.releasePointerCapture(e.pointerId);
     }
+    // NOTE: didDrag は次の click イベントで参照するためリセットしない
   };
 
   return (
@@ -137,7 +153,7 @@ export function WorksCarousel({ works }: { works: WorkCardData[] }) {
         style={{ scrollbarWidth: "none" }}
       >
         {loop.map((w, i) => (
-          <WorkCard key={`${w.src}-${i}`} work={w} />
+          <WorkCard key={`${w.id}-${i}`} work={w} onClickGuard={handleCardClick} />
         ))}
       </div>
     </Reveal>

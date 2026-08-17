@@ -4,6 +4,8 @@ import { WorksCarousel, WorksSectionHeader } from "./works-carousel";
 type WorkSize = "portrait" | "tall" | "square";
 
 export type WorkCardData = {
+  id: string;
+  href: string;
   src: string;
   title: string;
   tag: string;
@@ -50,6 +52,8 @@ async function fetchWorks(): Promise<WorkCardData[]> {
       .filter(Boolean)
       .join(" / ");
     return {
+      id: item.id,
+      href: `/works/${item.id}`,
       src: item.image.url,
       title: item.title,
       tag,
