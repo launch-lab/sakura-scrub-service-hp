@@ -5,11 +5,14 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { FloatingCTA } from "@/components/layout/floating-cta";
 import { SakuraPetals } from "@/components/effects/sakura-petals";
-import { LocalBusinessJsonLd, FaqPageJsonLd, HowToJsonLd } from "@/components/seo/json-ld";
+import { LocalBusinessJsonLd, FaqPageJsonLd, HowToJsonLd, WebSiteJsonLd } from "@/components/seo/json-ld";
+import { BfcacheReset } from "@/components/effects/bfcache-reset";
 import { getSiteUrl, site } from "@/lib/site";
 
 const kaiseiHarunoUmi = Kaisei_HarunoUmi({
   variable: "--font-body-jp",
+  // NOTE: "japanese" は日本語 Google Fonts の有効なサブセットだが型定義に含まれていない
+  // @ts-expect-error
   subsets: ["latin", "japanese"],
   weight: ["400", "500", "700"],
   display: "swap",
@@ -26,6 +29,7 @@ const fraunces = Fraunces({
 
 const kleeOne = Klee_One({
   variable: "--font-script-jp",
+  // @ts-expect-error
   subsets: ["latin", "japanese"],
   weight: ["400", "600"],
   display: "swap",
@@ -34,6 +38,7 @@ const kleeOne = Klee_One({
 
 const kaiseiDecol = Kaisei_Decol({
   variable: "--font-decor-jp",
+  // @ts-expect-error
   subsets: ["latin", "japanese"],
   weight: ["500", "700"],
   display: "swap",
@@ -49,6 +54,9 @@ export const metadata: Metadata = {
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: `${site.name} | ${site.tagline}`,
     description: site.description,
@@ -87,6 +95,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
+        <BfcacheReset />
+        <WebSiteJsonLd />
         <LocalBusinessJsonLd />
         <FaqPageJsonLd />
         <HowToJsonLd />
