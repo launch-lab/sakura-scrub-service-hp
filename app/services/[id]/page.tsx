@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { client, type ServiceItem } from "@/lib/microcms";
 import { getSiteUrl, site } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -23,17 +24,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       contentId: id,
     });
     const siteUrl = getSiteUrl();
+    const pageUrl = `${siteUrl}/services/${id}`;
     return {
       title: service.title,
       description: service.description,
+      alternates: { canonical: pageUrl },
       openGraph: {
         title: `${service.title} | ${site.name}`,
         description: service.description,
-        url: `${siteUrl}/services/${id}`,
+        url: pageUrl,
         siteName: site.name,
         locale: "ja_JP",
         type: "website",
-        images: [{ url: service.image.url, alt: service.title }],
+        images: [{ url: service.image.url, alt: service.title, width: service.image.width, height: service.image.height }],
       },
       twitter: {
         card: "summary_large_image",
@@ -81,6 +84,13 @@ export default async function ServiceDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "ホーム", item: siteUrl },
+          { name: "施工メニュー", item: `${siteUrl}/#services` },
+          { name: service.title },
+        ]}
       />
       <Link
         href="/#services"

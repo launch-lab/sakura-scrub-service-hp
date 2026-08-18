@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { client, type WorkItem } from "@/lib/microcms";
 import { getSiteUrl, site } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -23,19 +24,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       contentId: id,
     });
     const siteUrl = getSiteUrl();
+    const pageUrl = `${siteUrl}/works/${id}`;
     const description = `${site.name}の施工事例：${item.title}`;
     return {
       title: item.title,
       description,
+      alternates: { canonical: pageUrl },
       openGraph: {
         title: `${item.title} | 施工事例 | ${site.name}`,
         description,
-        url: `${siteUrl}/works/${id}`,
+        url: pageUrl,
         siteName: site.name,
         locale: "ja_JP",
         type: "website",
         images: item.image?.url
-          ? [{ url: item.image.url, alt: item.title }]
+          ? [{ url: item.image.url, alt: item.title, width: item.image.width, height: item.image.height }]
           : undefined,
       },
       twitter: {
@@ -89,6 +92,13 @@ export default async function WorkDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "ホーム", item: siteUrl },
+          { name: "施工事例", item: `${siteUrl}/#works` },
+          { name: item.title },
+        ]}
       />
 
       <Link

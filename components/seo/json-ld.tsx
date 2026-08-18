@@ -1,5 +1,52 @@
 import { getSiteUrl, site } from "@/lib/site";
 
+type BreadcrumbItem = { name: string; item?: string };
+
+export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((crumb, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: crumb.name,
+      ...(crumb.item ? { item: crumb.item } : {}),
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
+export function WebSiteJsonLd() {
+  const siteUrl = getSiteUrl();
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    alternateName: site.nameEn,
+    description: site.description,
+    url: siteUrl,
+    inLanguage: "ja-JP",
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      url: siteUrl,
+    },
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
+
 const faqs = [
   {
     q: "見積もりは無料ですか？",

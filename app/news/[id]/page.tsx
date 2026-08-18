@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { client, type NewsItem } from "@/lib/microcms";
 import { getSiteUrl, site } from "@/lib/site";
+import { BreadcrumbJsonLd } from "@/components/seo/json-ld";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -23,19 +24,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       contentId: id,
     });
     const siteUrl = getSiteUrl();
+    const pageUrl = `${siteUrl}/news/${id}`;
     return {
       title: item.title,
       description: item.excerpt,
+      alternates: { canonical: pageUrl },
       openGraph: {
         title: `${item.title} | ${site.name}`,
         description: item.excerpt,
-        url: `${siteUrl}/news/${id}`,
+        url: pageUrl,
         siteName: site.name,
         locale: "ja_JP",
         type: "article",
         publishedTime: item.publishedAt,
         images: item.thumbnail?.url
-          ? [{ url: item.thumbnail.url, alt: item.title }]
+          ? [{ url: item.thumbnail.url, alt: item.title, width: item.thumbnail.width, height: item.thumbnail.height }]
           : undefined,
       },
       twitter: {
@@ -87,6 +90,13 @@ export default async function NewsDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "ホーム", item: siteUrl },
+          { name: "お知らせ", item: `${siteUrl}/#news` },
+          { name: item.title },
+        ]}
       />
 
       <Link
