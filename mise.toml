@@ -2,4 +2,4 @@
 # 22 系で特に効きやすく、手元と Vercel のビルドで同じ挙動を再現するため採用。
 # package.json の engines.node も 22.x に合わせている。
 [tools]
-node = "22"
+node = "22.23.4"
