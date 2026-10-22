@@ -12,7 +12,7 @@ import { getSiteUrl, site } from "@/lib/site";
 const kaiseiHarunoUmi = Kaisei_HarunoUmi({
   variable: "--font-body-jp",
   // NOTE: "japanese" は日本語 Google Fonts の有効なサブセットだが型定義に含まれていない
-  // @ts-expect-error
+  // @ts-expect-error "japanese" サブセットが型定義に無いため
   subsets: ["latin", "japanese"],
   weight: ["400", "500", "700"],
   display: "swap",
@@ -29,7 +29,7 @@ const fraunces = Fraunces({
 
 const kleeOne = Klee_One({
   variable: "--font-script-jp",
-  // @ts-expect-error
+  // @ts-expect-error "japanese" サブセットが型定義に無いため
   subsets: ["latin", "japanese"],
   weight: ["400", "600"],
   display: "swap",
@@ -38,7 +38,7 @@ const kleeOne = Klee_One({
 
 const kaiseiDecol = Kaisei_Decol({
   variable: "--font-decor-jp",
-  // @ts-expect-error
+  // @ts-expect-error "japanese" サブセットが型定義に無いため
   subsets: ["latin", "japanese"],
   weight: ["500", "700"],
   display: "swap",
